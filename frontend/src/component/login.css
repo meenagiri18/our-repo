@@ -1,0 +1,28 @@
+.form{
+    background-color: skyblue;
+
+}
+.form2{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+.right{
+    width: 500px;
+    height: 60vh;
+    background-color: rgb(230, 230, 221);
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+    padding: 0px 20px;
+    border-radius: 15px;
+}
+.left{
+display: flex;
+justify-content: center;
+
+}
