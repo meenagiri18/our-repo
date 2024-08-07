@@ -26,3 +26,12 @@ display: flex;
 justify-content: center;
 
 }
+.log2{
+    justify-content: center;
+    margin-top: 1.5rem;
+
+}
+.log2:hover{
+    
+    background-color: lightskyblue;
+}

@@ -7,7 +7,7 @@ import './header.css'
 
 export default function Header() {
   return (
-    <div className='container-fluid d-flex justify-content-between bg-info' >
+    <div className=' sub2 container-fluid d-flex justify-content-between' >
         <div>
             <img src={Images} alt='error' height={60} width={55}></img>
 
@@ -30,9 +30,9 @@ export default function Header() {
             
 
         </div>
-        <div className='d-flex btn'>
-            <button><Link to="/login">Login</Link></button>
-            <button>Sign up</button>
+        <div className=' btn'>
+            <button><Link to="/login" className='log'>Login</Link></button>
+            <button><Link to="/signup" className='log'>Sign up</Link></button>
 
         </div>
         
