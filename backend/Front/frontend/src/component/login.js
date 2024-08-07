@@ -37,7 +37,7 @@ export default function Login() {
 
             <Row>
               <Col>
-                <Button type="submit" className="w-100 mt-3">Login</Button>
+                <Button type="submit" className=" log2 w-100">LOGIN</Button>
               </Col>
             </Row>
 
