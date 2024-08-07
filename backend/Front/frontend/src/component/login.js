@@ -19,7 +19,7 @@ export default function Login() {
           <p>Login To Your Account!</p>
         </Row>
         <hr></hr>
-          <Form method='POST' action=''>
+          <Form method='POST' action='http://127.0.0.1:8000/login/'>
             <Row>
               <Form.Group>
                 <Form.Label for="email">Email</Form.Label>
