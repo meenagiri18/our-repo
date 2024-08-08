@@ -20,7 +20,7 @@ export default function Signup() {
           </Row>
 
 
-          <Form method="POST" action="">
+          <Form method="POST" action="http://127.0.0.1:8000/signup">
             <Row>
               <Form.Group>
                 <Form.Label for="email">Email</Form.Label>
