@@ -12,7 +12,7 @@
 }
 .right{
     width: 500px;
-    height: 70vh;
+    height: 80vh;
     background-color: rgb(230, 230, 221);
     display: flex;
     flex-direction: column;
@@ -28,9 +28,6 @@ justify-content: center;
 .log2{
     justify-content: center;
     margin-top: 1.5rem;
+    background-color: skyblue;
 
-}
-.log2:hover{
-    
-    background-color: lightskyblue;
 }

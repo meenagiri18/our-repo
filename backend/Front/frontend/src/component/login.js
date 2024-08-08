@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Row, Col, Button, Image, Container } from "react-bootstrap";
+import { Form, Row, Col, Image, Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Link } from 'react-router-dom'
 import Login1 from '../images/login1.png'
@@ -14,11 +14,11 @@ export default function Login() {
         </Col>
 
         <div className='right container'>
-        <Row>
-          <h2>You are welcome here!</h2>
-          <p>Login To Your Account!</p>
-        </Row>
-        <hr></hr>
+          <Row>
+            <h2>You are welcome here!</h2>
+            <p>Login To Your Account!</p>
+          </Row>
+          <hr></hr>
           <Form method='POST' action='http://127.0.0.1:8000/login/'>
             <Row>
               <Form.Group>
@@ -30,14 +30,14 @@ export default function Login() {
             <Row>
               <Form.Group className='mt-3'>
                 <Form.Label for="password">Password</Form.Label>
-                <Form.Control  className='w-100' name="password" id="password" type="password" required></Form.Control>
+                <Form.Control className='w-100' name="password" id="password" type="password" required></Form.Control>
               </Form.Group>
 
             </Row>
 
             <Row>
               <Col>
-                <Button type="submit" className=" log2 w-100">LOGIN</Button>
+                <button type="submit" className=" log2 w-100">LOGIN</button>
               </Col>
             </Row>
 

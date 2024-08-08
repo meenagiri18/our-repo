@@ -22,16 +22,16 @@
 button{
     height: 45px;
     width: 80px;
-    
-    border-radius: 10px;
-    border: none;
+    border-radius: 8px;
     
     
     
-
 
 }
-button:hover{
+
+
+
+ .btn button:hover{
     color: white;
     background-color: orange;
     cursor: pointer;
@@ -39,6 +39,7 @@ button:hover{
 .btn{
     gap: 15px;
     display: flex;
+    border: none;
 }
 
 .log{
