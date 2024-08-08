@@ -38,14 +38,13 @@ button:hover{
 }
 .btn{
     gap: 15px;
-    text-decoration: dotted;
     display: flex;
 }
 
 .log{
     text-decoration: none;
     color: steelblue;
-    font-weight: bold;
+    
 }
 
 

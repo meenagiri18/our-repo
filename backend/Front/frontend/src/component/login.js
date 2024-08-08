@@ -42,7 +42,7 @@ export default function Login() {
             </Row>
 
             <Row className='sub-2 mt-3'>
-              <Form.Text>Need an account? <Link to="/Signup">Create an account</Link>
+              <Form.Text>Need an account? <Link to="/signup">Create an account</Link>
               </Form.Text>
             </Row>
           </Form>

@@ -32,7 +32,7 @@ export default function Header() {
         </div>
         <div className=' btn'>
             <button><Link to="/login" className='log'>Login</Link></button>
-            <button><Link to="/signup" className='log'>Sign up</Link></button>
+            <button><Link to="/Signup" className='log'>Sign up</Link></button>
 
         </div>
         

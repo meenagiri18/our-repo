@@ -1,6 +1,5 @@
 import React from 'react'
 import { Row, Form, Image,Container, Col,Button} from 'react-bootstrap';
-
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Link } from 'react-router-dom'
 import Login1 from '../images/login1.png'
@@ -48,7 +47,7 @@ export default function Signup() {
               </Col>
             </Row>
             <Row className='sub-2 mt-3'>
-              <Form.Text>Need an account? <Link to="/Signup">Create an account</Link>
+              <Form.Text>Already have account.<Link to="/login">LOGIN</Link>
               </Form.Text>
             </Row>
 
