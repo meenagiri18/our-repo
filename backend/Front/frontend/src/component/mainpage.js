@@ -1,5 +1,5 @@
 import React from 'react'
-import Images from '../images/elogo.png'
+import Images from '../images/expresslogo.jpg'
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -7,7 +7,7 @@ export default function Mainpage() {
     return (
         <div className=' sub2 container-fluid d-flex justify-content-between'>
             <div>
-                <img src={Images} alt='error' height={60} width={55}></img>
+                <img src={Images} alt='error' width={110} height={55}></img>
 
             </div>
             <div className='d-flex listing'>
@@ -20,7 +20,7 @@ export default function Mainpage() {
                 </div>
 
                 <div>
-                    <Link to="" className='any'>Parcel Creation</Link>
+                    <Link to="/parcel" className='any'>Parcel Creation</Link>
                 </div>
                 <div>
                     <Link to="" className='any'>Tracking</Link>

@@ -1,5 +1,5 @@
 import React from 'react'
-import Images from '../images/elogo.png'
+import Images from '../images/expresslogo.jpg'
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './header.css'
@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <div className=' sub2 container-fluid d-flex justify-content-between' >
         <div>
-            <img src={Images} alt='error' height={60} width={55}></img>
+            <img src={Images} alt='error' height={55} width={110}></img>
 
         </div>
         <div className='d-flex listing'>
@@ -22,7 +22,7 @@ export default function Header() {
             </div>
 
             <div>
-                <Link to="" className='any'>Parcel Creation</Link>
+                <Link to="parcel" className='any'>Parcel Creation</Link>
             </div>
             <div>
                 <Link to="" className='any'>Tracking</Link>
