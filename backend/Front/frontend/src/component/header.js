@@ -22,7 +22,7 @@ export default function Header() {
             </div>
 
             <div>
-                <Link to="parcel" className='any'>Parcel Creation</Link>
+                <Link to="/api/create_parcel" className='any'>Parcel Creation</Link>
             </div>
             <div>
                 <Link to="" className='any'>Tracking</Link>
