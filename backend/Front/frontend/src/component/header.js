@@ -7,7 +7,8 @@ import './header.css'
 
 export default function Header() {
   return (
-    <div className=' sub2 container-fluid d-flex justify-content-between' >
+    
+    <div className=' sub2 w-100' >
         <div>
             <img src={Images} alt='error' height={55} width={110}></img>
 
@@ -38,5 +39,8 @@ export default function Header() {
         
       
     </div>
+    
+
+    
   )
 }

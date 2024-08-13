@@ -1,5 +1,11 @@
 .sub2{
-    background-color: skyblue;
+    background-color: #0b3d91;
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+
+    
+    
 }
 
 .listing{
@@ -21,17 +27,14 @@
 }
 
 .any:hover{
-    color: blue;
+    color: gray;
 }
 
 button{
     height: 45px;
     width: 80px;
     border-radius: 8px;
-    
-    
-    
-
+    color: green;
 }
 
 

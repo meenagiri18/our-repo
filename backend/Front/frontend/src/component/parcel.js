@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Row, Image, Col, Container, Form, FormGroup } from "react-bootstrap";
+import { Row, Image, Col, Container, Form,} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Delivery from '../images/delivery.png';
 import './parcel.css'
@@ -62,7 +62,7 @@ export default function Parcel() {
         <Container fluid className='section'>
             <div className='section1'>
                 <Col>
-                    <Image src={Delivery} alt='error' width={750}></Image>
+                    <Image src={Delivery} alt='error' width={550}></Image>
                 </Col>
 
                 <div className='copy'>
