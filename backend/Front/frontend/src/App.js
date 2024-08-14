@@ -16,7 +16,7 @@ function App() {
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/mainpage" element={<Mainpage />}></Route>
           <Route path="/api/create_parcel" element={<Parcel />}></Route>
-          <Route path="" element={<Homepage />}></Route>
+          <Route path="/" element={<Homepage />}></Route>
         </Routes>
         
       </Router>

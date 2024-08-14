@@ -19,26 +19,24 @@ def index(request):
 def mainpage(request):
     return render(request,'mainpage')
 
+
 def signup(request):
     if request.method== 'POST':
-        email= request.POST['email']
-        password= request.POST['password']
-        password2= request.POST['password2']
+        email= request.POST.get('email')
+        password= request.POST.get('Password')
+        password2= request.POST.get('password2')
 
+        if password != password2:
+            return JsonResponse({'success': False, 'error': 'Passwords do not match'})
+        if len(password)<8:
+            return JsonResponse({'success':False, 'error3':'Password must be of 8 characters'})
 
-        if password == password2:
-            if User.objects.filter(email=email).exists():
-                messages.info(request, 'Email already used')
-                return redirect('signup')
-            
-        
-            else:
-                user = User.objects.create_user(username=email,password=password)
-                return redirect('/login')
-            
-        else:
-            messages.info(request, 'Password not same')
-            return redirect('signup')   
+        if User.objects.filter(username=email).exists():
+            return JsonResponse({'success': False, 'error1': 'Email already exists'})
+
+        user = User.objects.create_user(username=email, password=password)
+        user.save()
+        return JsonResponse({'success': True, 'redirect': '/login'})
                 
     else:
         return render(request, 'signup')
@@ -56,25 +54,19 @@ def login(request):
 
         if user is not None:
             auth.login(request,user)
-            return redirect('/mainpage')
+            return JsonResponse({'success':True,'redirect':'/mainpage'})
       
         else:
-            data={
-                'error':'invalid'
-            }
-            return JsonResponse(data)
-           
+            return JsonResponse({'success':False,'error':'Invalid credentials'})
+
+            
           
     else:
             return redirect( '/login')
     
 
 
-def go(request):
-    data={
-        'error':'invalid'
-    }
-    return JsonResponse(data)
+
 
 def generate_tracking_number():
     

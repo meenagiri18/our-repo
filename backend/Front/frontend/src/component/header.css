@@ -31,8 +31,8 @@
 }
 
 button{
-    height: 45px;
-    width: 80px;
+    height: 50px;
+    width: 70px;
     border-radius: 8px;
     color: green;
 }
@@ -41,7 +41,7 @@ button{
 
  .btn button:hover{
     color: white;
-    background-color: orange;
+    background-color: rgb(255, 111, 0);
     cursor: pointer;
 }
 .btn{

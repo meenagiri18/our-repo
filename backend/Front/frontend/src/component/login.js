@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Form, Row, Col, Image, Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Link } from 'react-router-dom'
@@ -6,6 +6,28 @@ import Login1 from '../images/login1.png'
 import './login.css'
 
 export default function Login() {
+  const [errorMessage,setErrorMessage] = useState("");
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    const response = await fetch("http://127.0.0.1:8000/login/", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      window.location.href = data.redirect; // Redirect on successful login
+    } else {
+      setErrorMessage(data.error); // Set error message
+    }
+  };
+
+
+  
   return (
     <Container fluid className='form'>
       <Row className=' form2 container'>
@@ -18,8 +40,8 @@ export default function Login() {
             <h2>You are welcome here!</h2>
             <p>Login To Your Account!</p>
           </Row>
-          <hr></hr>
-          <Form method='POST' action='http://127.0.0.1:8000/login/'>
+          <hr></hr> 
+          <Form method='POST' onSubmit={handleSubmit}>
             <Row>
               <Form.Group>
                 <Form.Label for="email">Email</Form.Label>
@@ -34,6 +56,14 @@ export default function Login() {
               </Form.Group>
 
             </Row>
+            
+            {errorMessage && (
+            <Row>
+              <Col>
+                <div className="alert alert-danger">{errorMessage}</div>
+              </Col>
+            </Row>
+            )}
 
             <Row>
               <Col>
