@@ -69,7 +69,6 @@ def login(request):
 
 
 def generate_tracking_number():
-    
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=12))
 
 @csrf_exempt
@@ -80,26 +79,30 @@ def create_parcel(request):
             sender = data.get('sender_name')
             receiver = data.get('receiver_name')
             location = data.get('location')
-            parcelid = data.get('parcelid')
+            
            
            
             # Ensure all required fields are provided
-            if not all([sender, receiver, location, parcelid]):
-                return JsonResponse({"error": "Missing required fields"}, status=400)
+            if not all([sender, receiver, location]):
+                return JsonResponse({"error": "Missing required fields"},status=400)
             
-            if Parcel.objects.filter(parcelid=parcelid).exists():
-                return JsonResponse({"error": "Parcel with this ID already exists"}, status=400)
-
+            # Validate that sender and receiver names are not integers
+            # if not sender.isalpha() or not receiver.isalpha():
+            #     return JsonResponse({"error": "Sender and receiver names must only contain letters."})
+            
+           
             # Generate tracking number
             tracking_number = generate_tracking_number()
 
             # Save the parcel to the database
-            parcel = Parcel(sender=sender, receiver=receiver, location=location, parcelid=parcelid, tracking_number=tracking_number)
+            parcel = Parcel(sender=sender, receiver=receiver, location=location, tracking_number=tracking_number)
+            parcel.clean()
             parcel.save()
 
             response_data = {
                 "message": "Parcel created successfully!",
-                "tracking_number": tracking_number
+                "parcelid":parcel.parcelid,
+                "tracking_number": tracking_number,
             }
             return JsonResponse(response_data)
 
