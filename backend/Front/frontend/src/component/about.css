@@ -1,0 +1,33 @@
+.package {
+    display: flex;
+    background-color: white;
+    padding: 20px;
+    justify-content: space-around;
+    align-items: center;
+    gap: 70px;
+    height: 80vh;
+}
+
+.explain {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: justify;
+
+}
+
+.head{
+    display: flex;
+    flex-direction: column;
+    font-size: 60px;
+    font-weight: bold;
+
+
+}
+.btn-4{
+    color: white;
+    background-color: #0b3d91;
+
+    width: 150px;
+}

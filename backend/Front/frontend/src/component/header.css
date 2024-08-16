@@ -1,3 +1,9 @@
+.heading{
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    padding-left: 20px ;
+}
 .sub2{
     background-color: #0b3d91;
     display: flex;
@@ -29,31 +35,31 @@
 .any:hover{
     color: gray;
 }
-
-button{
-    height: 50px;
-    width: 70px;
-    border-radius: 8px;
-    color: green;
-}
-
-
-
- .btn button:hover{
-    color: white;
-    background-color: rgb(255, 111, 0);
-    cursor: pointer;
-}
 .btn{
-    gap: 15px;
     display: flex;
-    border: none;
-}
+    gap: 20px;
 
+}
 .log{
     text-decoration: none;
-    color: steelblue;
+    color:black;
+   
+    
+    
     
 }
+button{
+    background-color: white;
+    border-radius: 12px;
+    width: 90px;
+    height: 45px;
+}
+button:hover{
+    background-color: lightskyblue;
+}
+.log:hover{
+    color: white;
+}
+
 
 

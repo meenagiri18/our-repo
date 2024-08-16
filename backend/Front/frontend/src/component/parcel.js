@@ -73,28 +73,28 @@ export default function Parcel() {
                         <Row>
                             <Form.Group>
                             <Form.Label htmlFor="parcelid">Parcel ID</Form.Label>
-                            <Form.Control className='w-100 m-2'  type="text" value={parcelid} onChange={(e) => setParcelID(e.target.value)} required></Form.Control>
+                            <Form.Control className='w-100 '  type="text" value={parcelid} onChange={(e) => setParcelID(e.target.value)} required></Form.Control>
                             </Form.Group>
                         </Row>
                         
                         <Row>
                             <Form.Group>
                                 <Form.Label htmlFor="receivername">Receiver Name</Form.Label>
-                                <Form.Control className='w-100 m-2'  type="text" value={receiverName} onChange={(e) => setReceiverName(e.target.value)}required></Form.Control>
+                                <Form.Control className='w-100 '  type="text" value={receiverName} onChange={(e) => setReceiverName(e.target.value)}required></Form.Control>
                             </Form.Group>
 
                         </Row>
                         <Row>
                             <Form.Group>
                                 <Form.Label htmlFor="sendername">Sender Name</Form.Label>
-                                <Form.Control className='w-100 m-2'  type="text" value={senderName} onChange={(e) => setSenderName(e.target.value)} required></Form.Control>
+                                <Form.Control className='w-100 '  type="text" value={senderName} onChange={(e) => setSenderName(e.target.value)} required></Form.Control>
                             </Form.Group>
 
                         </Row>
                         <Row>
                             <Form.Group>
                                 <Form.Label htmlFor="location">Location</Form.Label>
-                                <Form.Control className='w-100 m-2'  type="text" value={location} onChange={(e) => setLocation(e.target.value)} required></Form.Control>
+                                <Form.Control className='w-100 '  type="text" value={location} onChange={(e) => setLocation(e.target.value)} required></Form.Control>
                             </Form.Group>
 
                         </Row>

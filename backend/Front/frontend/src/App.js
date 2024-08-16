@@ -5,6 +5,8 @@ import Signup from "./component/Signup";
 import Mainpage from './component/mainpage';
 import Parcel from "./component/parcel";
 import Homepage from './component/homepage';
+import About from './component/about'
+import Tracking from './component/tracking'
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path="/mainpage" element={<Mainpage />}></Route>
           <Route path="/api/create_parcel" element={<Parcel />}></Route>
           <Route path="/" element={<Homepage />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/tracking" element={<Tracking />}></Route>
         </Routes>
         
       </Router>
