@@ -5,14 +5,15 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaGithubSquare } from "react-icons/fa";
-import Header from './header'
+import Navbar from './navbar';
+
 
 
 export default function About() {
   return (
     <div>
 
-      <div><Header /></div>
+      <div><Navbar/></div>
       <div className='pt-5'>
         <div className='package'>
           <div className='explain'>

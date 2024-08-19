@@ -84,6 +84,7 @@ export default function Homepage() {
             <div className=' topic text-primary' >About us</div>
             <h6>ExpressTrack is easy-to-use courier management system designed to make your delivery process smooth and efficient. Whether you’re a small business or a large logistics company, our platform helps you manage and track parcels with accuracy and reliability. From order processing to customer notifications, ExpressTrack simplifies every step, ensuring your deliveries are always on time.</h6>
           </div>
+          
           <button className='btn1 w-25'><Link className='text-white text-decoration-none' to='/about'>Read More</Link></button>
         </div>
         <div className='picture'>

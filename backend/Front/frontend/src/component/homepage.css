@@ -1,7 +1,7 @@
 .content {
     text-align: center;
     color: white;
-   background-color: rgb(2, 2, 60);
+    background-color: rgb(2, 2, 60);
     height: 80vh;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,8 @@
     font-size: 65px;
     font-weight: bold;
 }
-.secondheader{
+
+.secondheader {
     font-size: 25px;
 }
 
@@ -46,40 +47,46 @@
     font-size: x-large;
     font-weight: bold;
 }
-.section3{
+
+.section3 {
     background-color: white;
-    display: flex;   
+    display: flex;
 }
 
-.description{
+.description {
     color: black;
     margin-top: 12px;
-    padding:   40px 40px;
+    padding: 40px 40px;
     width: 75%;
     text-align: justify;
-    
+
 }
 
-.btn1{
+div>.btn1 {
     padding: 3px;
     margin-left: 35px;
     background-color: rgb(2, 2, 92);
     color: white;
     border: none;
-    
-}
-.btn1:hover{
-    color: white;
-    background-color: skyblue;
-    
-    
+    border-radius: 12px;
+    width: 90px;
+    height: 45px;
+
 }
 
-.picture{
-    padding: 40px 40px ;
-    
+.btn1:hover {
+    color: white;
+    background-color: skyblue;
+
+
 }
-.thirdheader{
+
+.picture {
+    padding: 40px 40px;
+
+}
+
+.thirdheader {
     display: flex;
     text-align: justify;
     align-items: center;
@@ -90,11 +97,11 @@
     height: 300px;
     margin-top: 25px;
     padding: 40px;
-    
+
 }
 
 
-.design{
+.design {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -106,38 +113,42 @@
     font-weight: bold;
 
 }
-.imp{
+
+.imp {
     height: 40%;
     width: 40%;
 }
-.fourthheader{
+
+.fourthheader {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: justify;
     height: 380px;
 }
-.description_box{
+
+.description_box {
     gap: 55px;
     background-color: white;
     color: black;
     width: 50%;
-   
     margin-top: 25px;
     padding: 40px;
     border: 2px solid rgb(2, 2, 60);
     border-radius: 18px;
     box-shadow: 0px 4px 8px;
-    
+
 }
-.footer_d{
+
+.footer_d {
     background-color: rgb(2, 2, 60);
     height: 40vh;
     margin-top: 35px;
     color: white;
-    
+
 }
-.footer{
+
+.footer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -145,26 +156,29 @@
     padding-top: 60px;
     font-size: larger;
 }
-.footer2{
+
+.footer2 {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 50px;
     padding-top: 30px;
-    
-    
+
+
 }
-.iconimg{
+
+.iconimg {
     height: 35px;
     width: 35px;
 }
-.footer3{
+
+.footer3 {
     display: flex;
     padding-top: 30px;
     justify-content: center;
 }
 
-.topic{
+.topic {
     font-size: 40px;
     font-weight: bold;
 }

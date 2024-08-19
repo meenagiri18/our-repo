@@ -8,6 +8,7 @@ import Homepage from './component/homepage';
 import About from './component/about'
 import Tracking from './component/tracking'
 
+
 function App() {
   return (
     <div>
@@ -20,6 +21,7 @@ function App() {
           <Route path="/api/create_parcel" element={<Parcel />}></Route>
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/about" element={<About />}></Route>
+          
           <Route path="/tracking" element={<Tracking />}></Route>
         </Routes>
         

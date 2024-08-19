@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { Row, Image, Col, Container, Form,} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Delivery from '../images/delivery.png';
+import Parcelimg from '../images/parcelimg.jpg';
 import './parcel.css'
 import styled from 'styled-components'
+import Navbar from './navbar';
+
 
 const ErrorMessage = styled.p`
     color: ${props => props.color || 'black'};
@@ -101,10 +103,12 @@ export default function Parcel() {
 
 
     return (
+        <div>
+            <div><Navbar/></div>
         <Container fluid className='section'>
             <div className='section1'>
                 <Col>
-                    <Image src={Delivery} alt='error' width={550}></Image>
+                    <Image src={Parcelimg} alt='error' width={550}></Image>
                 </Col>
 
                 <div className='copy'>
@@ -144,5 +148,6 @@ export default function Parcel() {
                 </div>
             </div>
         </Container>
+        </div>
     )
 }
