@@ -1,15 +1,27 @@
 .section{
     background-color: skyblue;
+    padding: 40px;
 }
 .section1{
     display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     font-size: large;
 }   
 .copy{
+    width: 550px;
+    height: 93vh;
     background-color: rgb(230, 230, 221);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 15px;
     border-radius: 15px;
-
     
     
+    
+}
+.log3{
+    background-color: skyblue;
 }

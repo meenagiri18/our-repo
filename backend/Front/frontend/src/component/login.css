@@ -11,7 +11,7 @@
     
 }
 .right{
-    width: 500px;
+    width: 550px;
     height: 95vh;
     background-color: rgb(230, 230, 221);
     display: flex;
@@ -34,5 +34,9 @@ justify-content: center;
 button{
     border: none;
     outline: none;
+    background-color: white;
+    border-radius: 12px;
+    width: 90px;
+    height: 45px;
 
 }
