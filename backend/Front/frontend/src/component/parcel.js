@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Row, Image, Col, Container, Form, } from "react-bootstrap";
+import { Row, Image, Form, } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Parcelimg1 from '../images/parcelimg1.png';
 import './parcel.css'
@@ -13,13 +13,10 @@ import { FaGithubSquare } from "react-icons/fa";
 
 const ErrorMessage = styled.p`
     color: ${props => props.color || 'black'};
-    margin: 10px 0;
+    
 `;
 
-const SuccessMessage = styled.p`
-    color: green;
-    margin: 10px 0;
-`;
+
 
 
 
@@ -114,17 +111,23 @@ export default function Parcel() {
     return (
         <div>
             <div><Navbar /></div>
-            <Container fluid className='section'>
-                <div className='section1'>
-                    <Col>
-                        <Image src={Parcelimg1} alt='error' width={550}></Image>
-                    </Col>
 
+            <div className='section1'>
+                <div>
+                    <Image src={Parcelimg1} alt='error' width={550}></Image>
+                </div>
+                <div>
+                    <div>
+                        {trackingNumber && <div className='message'>Tracking Number: {trackingNumber}</div>}
+                        {parcelID && <div className='message'>Parcel ID: {parcelID}</div>}
+                    </div>
                     <div className='copy'>
+
                         <Row className=''>
                             <h2>You can create your parcel here!!</h2>
                         </Row>
-                        <Form method='POST' onSubmit={handleSubmit} action='http://127.0.0.1:8000/api/create_parcel/' >
+
+                        <Form method='POST' onSubmit={handleSubmit} action='http://127.0.0.1:8000/api/create_parcel/' className='formm' >
 
 
                             <Row>
@@ -155,29 +158,30 @@ export default function Parcel() {
                                 </Form.Group>
                             </Row>
                             <button className='w-100 mt-3 log3' type='submit'>Submit</button>
+                            {message && messageType === 'error' && <ErrorMessage color='red'>{message}</ErrorMessage>}
+                            {message && messageType === 'success' && <div className='message'>{message}</div>}
+
                         </Form>
-                        {message && messageType === 'error' && <ErrorMessage color='red'>{message}</ErrorMessage>}
-                        {message && messageType === 'success' && <SuccessMessage>{message}</SuccessMessage>}
-                        {trackingNumber && <SuccessMessage>Tracking Number: {trackingNumber}</SuccessMessage>}
-                        {parcelID && <SuccessMessage>Parcel ID: {parcelID}</SuccessMessage>}
+
                     </div>
                 </div>
-            </Container>
+            </div>
+
             <div className='footer_d'>
-            <div className='footer'>
-                <h8>Home</h8>
-                <h8>About</h8>
-                <h8>Parcel Creation</h8>
-                <h8>Tracking</h8>
+                <div className='footer'>
+                    <h8>Home</h8>
+                    <h8>About</h8>
+                    <h8>Parcel Creation</h8>
+                    <h8>Tracking</h8>
+                </div>
+                <div className='footer2'>
+                    <FaFacebookSquare className='iconimg' />
+                    <FaInstagramSquare className='iconimg' />
+                    <FaSquareXTwitter className='iconimg' />
+                    <FaGithubSquare className='iconimg' />
+                </div>
+                <div className='footer3'>© Copyright 2020, All rights reserved</div>
             </div>
-            <div className='footer2'>
-                <FaFacebookSquare className='iconimg' />
-                <FaInstagramSquare className='iconimg' />
-                <FaSquareXTwitter className='iconimg' />
-                <FaGithubSquare className='iconimg' />
-            </div>
-            <div className='footer3'>© Copyright 2020, All rights reserved</div>
         </div>
-      </div> 
     )
 }

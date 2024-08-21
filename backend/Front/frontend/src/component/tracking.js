@@ -46,6 +46,7 @@ const TrackingForm = () => {
         <div>
             <div><Navbar /></div>
             <div className='tracking-container'>PRODUCT TRACKING</div>
+            
             <div className="tracking-form-container">
                 <h1>TRACK YOUR PRODUCT</h1>
                     <form method='POST' onSubmit={handleSubmit} action='http://127.0.0.1:8000/api/track_parcel/'>

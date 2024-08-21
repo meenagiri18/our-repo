@@ -124,7 +124,7 @@ div>.btn1 {
     align-items: center;
     justify-content: center;
     text-align: justify;
-    height: 380px;
+    height: 60vh;
 }
 
 .description_box {
@@ -132,7 +132,6 @@ div>.btn1 {
     background-color: white;
     color: black;
     width: 50%;
-    margin-top: 25px;
     padding: 40px;
     border: 2px solid rgb(2, 2, 60);
     border-radius: 18px;
@@ -143,7 +142,6 @@ div>.btn1 {
 .footer_d {
     background-color: rgb(2, 2, 60);
     height: 40vh;
-    margin-top: 35px;
     color: white;
 
 }

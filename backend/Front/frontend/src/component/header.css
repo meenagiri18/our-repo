@@ -3,15 +3,15 @@
     font-size: 40px;
     font-weight: bold;
     padding-left: 20px ;
+    
 }
 .sub2{
-    background-color: #0b3d91;
+    background-color: #0b3d91;  
     display: flex;
     position: fixed;
     justify-content: space-between;
-
-    
-    
+    align-items: center;
+    height: 10vh;   
 }
 
 .listing{
@@ -42,11 +42,7 @@
 }
 .log{
     text-decoration: none;
-    color:black;
-   
-    
-    
-    
+    color:black;    
 }
 .btn>button{
     background-color: white;
