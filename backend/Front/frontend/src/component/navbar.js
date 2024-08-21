@@ -20,7 +20,7 @@ export default function Navbar() {
                         <Link to="/api/create_parcel" className='any'>Parcel Creation</Link>
                     </div>
                     <div>
-                        <Link to="/tracking" className='any'>Tracking</Link>
+                        <Link to="/api/track_parcel" className='any'>Tracking</Link>
                     </div>
                 </div>
             </div>

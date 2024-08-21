@@ -11,18 +11,18 @@ const TrackingForm = () => {
     const [trackingDetails, setTrackingDetails] = useState(null);
     const [error, setError] = useState('');
 
-    const handleInputChange = (event) => {
-        setTrackingNumber(event.target.value);
+    const handleInputChange = (e) => {
+        setTrackingNumber(e.target.value);
     };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
         setTrackingDetails(null);
         setError('');
 
         try {
-            const response = await fetch('/track', {
+            const response = await fetch('http://127.0.0.1:8000/api/track_parcel/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ const TrackingForm = () => {
             <div className='tracking-container'>PRODUCT TRACKING</div>
             <div className="tracking-form-container">
                 <h1>TRACK YOUR PRODUCT</h1>
-                    <form onSubmit={handleSubmit}>
+                    <form method='POST' onSubmit={handleSubmit} action='http://127.0.0.1:8000/api/track_parcel/'>
                     <div className='container-box'>
                         <div className='container-box2 w-50'>
                             <input className='p-3 w-100'
@@ -80,6 +80,10 @@ const TrackingForm = () => {
                         <p>Status: {trackingDetails.status}</p>
                         <p>Current Location: {trackingDetails.location}</p>
                         <p>Expected Delivery: {trackingDetails.expected_delivery}</p>
+                        {trackingDetails.destination && (
+                            <p>Destination Location: {trackingDetails.destination}</p> 
+                        )}
+                        
                     </div>
                 )}
             </div>

@@ -21,8 +21,7 @@ function App() {
           <Route path="/api/create_parcel" element={<Parcel />}></Route>
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/about" element={<About />}></Route>
-          
-          <Route path="/tracking" element={<Tracking />}></Route>
+          <Route path="/api/track_parcel" element={<Tracking />}></Route>
         </Routes>
         
       </Router>
