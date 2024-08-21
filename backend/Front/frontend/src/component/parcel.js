@@ -23,7 +23,8 @@ export default function Parcel() {
     const [parcelID, setParcelID] = useState('');
     const [receiverName, setReceiverName] = useState('');
     const [senderName, setSenderName] = useState('');
-    const [location, setLocation] = useState('');
+    const [currentLocation, setCurrentLocation] = useState('');
+    const [destinationLocation, setDestinationLocation] = useState('');
     const [message, setMessage] = useState('');
     const [trackingNumber, setTrackingNumber] = useState('');
     const[messageType,setMessageType]=useState('');
@@ -33,7 +34,7 @@ export default function Parcel() {
         e.preventDefault();
 
          // Client-side validation
-    if (!senderName || !receiverName || !location) {
+    if (!senderName || !receiverName || !currentLocation || !destinationLocation) {
         setMessage("All fields are required.");
         setMessageType('error');
         return;
@@ -51,8 +52,11 @@ export default function Parcel() {
         errorMessages.push("Receiver name must not be a number.");
     }
     // Validate location
-    if (!isNaN(location)) {
-        errorMessages.push("Location must not be a number.");
+    if (!isNaN(currentLocation)) {
+        errorMessages.push("Current location must not be a number.");
+    }
+    if (!isNaN(destinationLocation)) {
+        errorMessages.push("Destination location must not be a number.");
     }
     if (errorMessages.length > 0) {
         setMessage(errorMessages.join(" "));
@@ -63,7 +67,8 @@ export default function Parcel() {
         const parcelData ={
             receiver_name:receiverName,
             sender_name:senderName,
-            location:location,
+            current_location:currentLocation,
+            destination_location:destinationLocation,
         };
         try{
             const response = await fetch('http://127.0.0.1:8000/api/create_parcel/', 
@@ -134,10 +139,16 @@ export default function Parcel() {
                         </Row>
                         <Row>
                             <Form.Group>
-                                <Form.Label htmlFor="location">Location</Form.Label>
-                                <Form.Control className='w-100 '  type="text" value={location} onChange={(e) => setLocation(e.target.value)} required></Form.Control>
+                                <Form.Label htmlFor="currentlocation">Current location</Form.Label>
+                                <Form.Control className='w-100 '  type="text" value={currentLocation} onChange={(e) => setCurrentLocation(e.target.value)} required></Form.Control>
                             </Form.Group>
 
+                        </Row>
+                        <Row>
+                        <Form.Group>
+                                <Form.Label htmlFor="destinationlocation">Destination location</Form.Label>
+                                <Form.Control className='w-100 '  type="text" value={destinationLocation} onChange={(e) => setDestinationLocation(e.target.value)} required></Form.Control>
+                            </Form.Group>
                         </Row>
                         <button className='w-100 m-2' type='submit'>Submit</button>
                     </Form>

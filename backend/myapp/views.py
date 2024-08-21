@@ -78,12 +78,14 @@ def create_parcel(request):
             data = json.loads(request.body)
             sender = data.get('sender_name')
             receiver = data.get('receiver_name')
-            location = data.get('location')
+            current_location = data.get('current_location')
+            destination_location = data.get('destination_location')
+           
             
            
            
             # Ensure all required fields are provided
-            if not all([sender, receiver, location]):
+            if not all([sender, receiver, current_location,destination_location]):
                 return JsonResponse({"error": "Missing required fields"},status=400)
             
             # Validate that sender and receiver names are not integers
@@ -95,7 +97,7 @@ def create_parcel(request):
             tracking_number = generate_tracking_number()
 
             # Save the parcel to the database
-            parcel = Parcel(sender=sender, receiver=receiver, location=location, tracking_number=tracking_number)
+            parcel = Parcel(sender=sender, receiver=receiver, current_location=current_location,destination_location=destination_location, tracking_number=tracking_number)
             parcel.clean()
             parcel.save()
 

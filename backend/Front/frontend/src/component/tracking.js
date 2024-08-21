@@ -44,9 +44,6 @@ const TrackingForm = () => {
             <div className='tracking-container'>PRODUCT TRACKING</div>
             <div className="tracking-form-container">
                 <h1>TRACK YOUR PRODUCT</h1>
-
-                
-
                     <form onSubmit={handleSubmit}>
                     <div className='container-box'>
                         <div className='container-box2 w-50'>
