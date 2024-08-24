@@ -5,9 +5,9 @@ from django.http import HttpResponse,JsonResponse
 import random
 import string
 import json
-from .models import Parcel
+from .models import Parcel,Tracking
 from django.views.decorators.csrf import csrf_exempt
-
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -116,23 +116,34 @@ def create_parcel(request):
     return JsonResponse({"error": "Invalid request method."}, status=400)
 
 
+@login_required
 @csrf_exempt
 def track_parcel(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
             tracking_number = data.get('tracking_number')
-            try:
-                parcel = Parcel.objects.get(tracking_number=tracking_number)
-                tracking_info = {
-                    'status': parcel.status,
-                    'location': parcel.current_location,
-                    'expected_delivery': parcel.expected_delivery_date,
-                    'destination': parcel.destination_location,  # Add destination location
-                }
-                return JsonResponse(tracking_info)
-            except Parcel.DoesNotExist:
-                return JsonResponse({'error': 'Tracking number not found.'}, status=404)
-        except json.JSONDecodeError:
-            return JsonResponse({'error': 'Invalid JSON format.'}, status=400)
-    return JsonResponse({'error': 'Invalid request method.'}, status=405)
+
+
+            # Query the parcel based on tracking_number
+            parcel = Parcel.objects.filter(tracking_number=tracking_number).first()
+
+
+            # Query the tracking details based on the parcel
+            tracking = Tracking.objects.filter(parcel=parcel).first()
+
+            if not tracking:
+                return JsonResponse({'error': 'Tracking details not found'}, status=404)
+
+            # Return tracking details
+            response_data = {
+                'status': tracking.status,
+                'location': tracking.location,
+            }
+
+            return JsonResponse(response_data)
+
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=405)
