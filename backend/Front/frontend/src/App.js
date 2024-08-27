@@ -6,7 +6,8 @@ import Mainpage from './component/mainpage';
 import Parcel from "./component/parcel";
 import Homepage from './component/homepage';
 import About from './component/about'
-import Tracking from './component/tracking'
+import TrackingForm from './component/tracking'
+ 
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
           <Route path="/api/create_parcel" element={<Parcel />}></Route>
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/about" element={<About />}></Route>
-          <Route path="/api/track_parcel" element={<Tracking />}></Route>
+          <Route path="/api/track_parcel" element={<TrackingForm />}></Route>
         </Routes>
         
       </Router>

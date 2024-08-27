@@ -9,10 +9,8 @@ import { MdBusinessCenter } from "react-icons/md";
 import { RiTimeZoneLine } from "react-icons/ri";
 import { IoPeople } from "react-icons/io5";
 import Homepageimg from '../images/homepageimg.jpg'
-import { FaFacebookSquare } from "react-icons/fa";
-import { FaInstagramSquare } from "react-icons/fa";
+import { FaFacebookSquare, FaGithubSquare,  FaInstagramSquare } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
-import { FaGithubSquare } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 

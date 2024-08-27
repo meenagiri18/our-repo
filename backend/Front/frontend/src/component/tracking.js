@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import './tracking.css'
 import Navbar from './navbar';
-import { FaFacebookSquare } from "react-icons/fa";
-import { FaInstagramSquare } from "react-icons/fa";
+import { FaFacebookSquare, FaGithubSquare,  FaInstagramSquare } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
-import { FaGithubSquare } from "react-icons/fa";
+import MyComponent from './googlemap'
+
+
+
+
 
 const TrackingForm = () => {
     const [trackingNumber, setTrackingNumber] = useState('');
-    const [trackingDetails, setTrackingDetails] = useState(null);
+    const [trackingDetails, setTrackingDetails] = useState('');
     const [error, setError] = useState('');
 
     const handleInputChange = (e) => {
@@ -18,7 +21,7 @@ const TrackingForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        setTrackingDetails(null);
+        setTrackingDetails('');
         setError('');
 
         try {
@@ -85,8 +88,13 @@ const TrackingForm = () => {
                             <p>Destination Location: {trackingDetails.destination}</p> 
                         )}
                         
+                
+                        <div><MyComponent /></div>
+               
+                        
                     </div>
                 )}
+                
             </div>
             <div className='footer_d'>
         <div className='footer'>
