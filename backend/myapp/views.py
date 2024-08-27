@@ -139,6 +139,7 @@ def track_parcel(request):
             response_data = {
                 'status': tracking.status,
                 'location': tracking.location,
+                'expected_delivery':tracking.expected_delivery,
             }
 
             return JsonResponse(response_data)

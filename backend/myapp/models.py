@@ -32,7 +32,7 @@ class Tracking(models.Model):
     parcel = models.OneToOneField(Parcel, on_delete=models.CASCADE, related_name='tracking')
     status = models.CharField(max_length=50)  # e.g., 'In Transit', 'Delivered'
     location = models.CharField(max_length=100,default='Unknown')
-    # expected_delivery = models.DateField(null=True, blank=True)  # Optional field for expected delivery date
+    expected_delivery = models.DateField(null=True, blank=True)  # Optional field for expected delivery date
 
     def __str__(self):
         return f"Tracking for {self.parcel.tracking_number}"
