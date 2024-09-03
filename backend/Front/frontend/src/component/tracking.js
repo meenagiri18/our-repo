@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import './tracking.css'
 import Navbar from './navbar';
-import { FaFacebookSquare, FaGithubSquare,  FaInstagramSquare } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
 import MyComponent from './googlemap'
-
-
-
+import { floydWarshall } from './algorithm';
+import Footer from './footer'
 
 
 const TrackingForm = () => {
     const [trackingNumber, setTrackingNumber] = useState('');
     const [trackingDetails, setTrackingDetails] = useState('');
     const [error, setError] = useState('');
+    const [shortestPaths, setShortestPaths] = useState("");
 
     const handleInputChange = (e) => {
         setTrackingNumber(e.target.value);
@@ -36,6 +34,29 @@ const TrackingForm = () => {
             if (response.ok) {
                 const data = await response.json();
                 setTrackingDetails(data);
+                const locations = [];
+                data.routes.forEach(route => {
+                    if (!locations.includes(route.from)) locations.push(route.from);
+                    if (!locations.includes(route.to)) locations.push(route.to);
+                });
+
+                const size = locations.length;
+                const graph = Array.from({ length: size }, () => Array(size).fill(Infinity));
+
+                // Initialize the graph with distances
+                for (let i = 0; i < size; i++) {
+                    graph[i][i] = 0;
+                }
+
+                data.routes.forEach(route => {
+                    const fromIndex = locations.indexOf(route.from);
+                    const toIndex = locations.indexOf(route.to);
+                    graph[fromIndex][toIndex] = route.distance;
+                });
+
+                // Calculate the shortest paths using Floyd-Warshall
+                const paths = floydWarshall(graph);
+                setShortestPaths(paths);
             } else {
                 setError('Tracking number not found or error fetching data.');
             }
@@ -49,10 +70,10 @@ const TrackingForm = () => {
         <div>
             <div><Navbar /></div>
             <div className='tracking-container'>PRODUCT TRACKING</div>
-            
+
             <div className="tracking-form-container">
                 <h1>TRACK YOUR PRODUCT</h1>
-                    <form method='POST' onSubmit={handleSubmit} action='http://127.0.0.1:8000/api/track_parcel/'>
+                <form method='POST' onSubmit={handleSubmit} action='http://127.0.0.1:8000/api/track_parcel/'>
                     <div className='container-box'>
                         <div className='container-box2 w-50'>
                             <input className='p-3 w-100'
@@ -66,14 +87,14 @@ const TrackingForm = () => {
                             />
                         </div>
 
-                        <div  className='btnnn w-50'>
+                        <div className='btnnn w-50'>
                             <button type="submit" className='btn-last w-100'>TRACK YOUR PRODUCT</button>
                         </div>
 
 
-                        </div>
-                    </form>
-                
+                    </div>
+                </form>
+
 
 
                 {error && <p className="error">{error}</p>}
@@ -85,33 +106,24 @@ const TrackingForm = () => {
                         <p>Current Location: {trackingDetails.location}</p>
                         <p>Expected Delivery: {trackingDetails.expected_delivery}</p>
                         {trackingDetails.destination && (
-                            <p>Destination Location: {trackingDetails.destination}</p> 
+                            <p>Destination Location: {trackingDetails.destination}</p>
                         )}
-                        
-                
+
+
                         <div><MyComponent /></div>
-               
-                        
+
+
                     </div>
                 )}
-                
-            </div>
-            <div className='footer_d'>
-        <div className='footer'>
-          <h8>Home</h8>
-          <h8>About</h8>
-          <h8>Parcel Creation</h8>
-          <h8>Tracking</h8>
-        </div>
-        <div className='footer2'>
-          <FaFacebookSquare className='iconimg' />
-          <FaInstagramSquare className='iconimg' />
-          <FaSquareXTwitter className='iconimg' />
-          <FaGithubSquare className='iconimg' />
-        </div>
-        <div className='footer3'>© Copyright 2020, All rights reserved</div>
-      </div>
+                {shortestPaths && (
+                    <div className="shortest-paths">
+                        <h3>Shortest Paths Matrix</h3>
+                        <pre>{JSON.stringify(shortestPaths, null, 2)}</pre>
+                    </div>
+                )}
 
+            </div>
+           <div><Footer/></div>
         </div>
     );
 };

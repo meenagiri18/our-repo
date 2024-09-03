@@ -1,6 +1,6 @@
 
 
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { MdOutlineTrackChanges } from "react-icons/md";
 import { FaShippingFast } from "react-icons/fa";
@@ -10,17 +10,15 @@ import { MdBusinessCenter } from "react-icons/md";
 import { RiTimeZoneLine } from "react-icons/ri";
 import { IoPeople } from "react-icons/io5";
 import Homepageimg from '../images/homepageimg.jpg'
-import { FaFacebookSquare } from "react-icons/fa";
-import { FaInstagramSquare } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
-import { FaGithubSquare } from "react-icons/fa";
 import { useEffect, useState } from 'react';
+import Navbar from './navbar';
+import Footer from './footer'
 
 
 
 
 export default function Mainpage() {
-    const [district, setDistrict] = useState(0);
+  const [district, setDistrict] = useState(0);
   const [clients, setClients] = useState(0);
   const [delivery, setDelivery] = useState(0);
   const [business, setBusiness] = useState(0);
@@ -51,33 +49,11 @@ export default function Mainpage() {
 
 
   }, [district, clients, delivery, business])
-    return (
-        <div>
-          
-  
-        <div className=' sub2 container-fluid d-flex justify-content-between'>
-        <div className='heading'>ExpressTrack</div>
-            
-            <div className='d-flex listing'>
-                <div>
-                    <Link to="" className='any' >Home</Link>
-                </div>
+  return (
+    <div>
+      <div><Navbar /></div>
 
-                <div>
-                    <Link to="/about" className='any'>About</Link>
-                </div>
-
-                <div>
-                    <Link to="/api/create_parcel/" className='any'>Parcel Creation</Link>
-                </div>
-                <div>
-                    <Link to="/api/track_parcel/" className='any'>Tracking</Link>
-                </div>
-
-
-            </div>
-        </div>
-        <div className='content'>
+      <div className='content'>
 
 
         <div className='content1'>
@@ -137,29 +113,15 @@ export default function Mainpage() {
       </div>
       <div className='fourthheader'>
         <div className='description_box'>
-          <h1>Why us? </h1>
+        <div className=' topic text-primary' >Why us? </div>
           <p>ExpressTrack is the ultimate solution for businesses seeking to optimize their delivery operations with ease and precision. Our platform stands out by offering a robust tracking system that ensures transparency and reliability at every step of the delivery process. With features like parcel tracking, automated customer notifications, and comprehensive order management, ExpressTrack not only streamlines your workflow but also enhances customer satisfaction. Whether you're managing a local delivery service or a large logistics network, ExpressTrack adapts to your needs, helping you reduce errors, improve efficiency, and grow your business with confidence. Choose ExpressTrack and experience the difference in seamless, stress-free courier management.
           </p>
         </div>
 
       </div>
-      <div className='footer_d'>
-        <div className='footer'>
-          <h8>Home</h8>
-          <h8>About</h8>
-          <h8>Parcel Creation</h8>
-          <h8>Tracking</h8>
-        </div>
-        <div className='footer2'>
-          <FaFacebookSquare className='iconimg' />
-          <FaInstagramSquare className='iconimg' />
-          <FaSquareXTwitter className='iconimg' />
-          <FaGithubSquare className='iconimg' />
-        </div>
-        <div className='footer3'>© Copyright 2020, All rights reserved</div>
-      </div>
+      <div><Footer/></div>
     </div>
-       
-    )
+
+  )
 }
 

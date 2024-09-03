@@ -9,10 +9,9 @@ import { MdBusinessCenter } from "react-icons/md";
 import { RiTimeZoneLine } from "react-icons/ri";
 import { IoPeople } from "react-icons/io5";
 import Homepageimg from '../images/homepageimg.jpg'
-import { FaFacebookSquare, FaGithubSquare,  FaInstagramSquare } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
+import Footer from './footer'
 
 
 
@@ -121,21 +120,7 @@ export default function Homepage() {
         </div>
 
       </div>
-      <div className='footer_d'>
-        <div className='footer'>
-          <h8>Home</h8>
-          <h8>About</h8>
-          <h8>Parcel Creation</h8>
-          <h8>Tracking</h8>
-        </div>
-        <div className='footer2'>
-          <FaFacebookSquare className='iconimg' />
-          <FaInstagramSquare className='iconimg' />
-          <FaSquareXTwitter className='iconimg' />
-          <FaGithubSquare className='iconimg' />
-        </div>
-        <div className='footer3'>© Copyright 2020, All rights reserved</div>
-      </div>
+      <div><Footer/></div>
     </div>
   )
 }

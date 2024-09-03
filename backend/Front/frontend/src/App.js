@@ -7,7 +7,8 @@ import Parcel from "./component/parcel";
 import Homepage from './component/homepage';
 import About from './component/about'
 import TrackingForm from './component/tracking'
- 
+import Shipment from './component/shipment'
+import Contact from './component/contact'
 
 
 function App() {
@@ -22,7 +23,10 @@ function App() {
           <Route path="/api/create_parcel" element={<Parcel />}></Route>
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/about" element={<About />}></Route>
+          <Route path="/shipment" element={<Shipment />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
           <Route path="/api/track_parcel" element={<TrackingForm />}></Route>
+          
         </Routes>
         
       </Router>

@@ -19,6 +19,9 @@ def index(request):
 def mainpage(request):
     return render(request,'mainpage')
 
+# def shipment(request):
+#     return render(request,'shipment')
+
 
 def signup(request):
     if request.method== 'POST':

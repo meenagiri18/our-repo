@@ -14,4 +14,5 @@ urlpatterns = [
     path('mainpage/',views.mainpage, name='mainpage'),
     path('api/create_parcel/',views.create_parcel,name='create_parcel'),
     path('api/track_parcel/',views.track_parcel, name='track_parcel'),
+    # path('shipment/',views.shipment, name = 'shipment'), 
 ]

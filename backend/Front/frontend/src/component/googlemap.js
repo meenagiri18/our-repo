@@ -15,7 +15,7 @@ function MyComponent() {
   return (
     
     <LoadScript
-      googleMapsApiKey="AIzaSyCGwLMSeSdsn0X7_KbKdHy6f_cFmFLDNvU" // Replace with your API key
+      googleMapsApiKey="AIzaSyCGwLMSeSdsn0X7_KbKdHy6f_cFmFLDNvU"  
     >
       <GoogleMap
         mapContainerStyle={containerStyle}

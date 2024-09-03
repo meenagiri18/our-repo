@@ -37,7 +37,6 @@ export default function Signup() {
         <div className='right container'>
           <Row>
             <h2>You are welcome here!</h2>
-            <p>Login To Your Account!</p>
           </Row>
 
 
