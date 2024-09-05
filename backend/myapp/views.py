@@ -5,7 +5,7 @@ from django.http import HttpResponse,JsonResponse
 import random
 import string
 import json
-from .models import Parcel,Tracking
+from .models import Parcel,Tracking,Shipment
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 
@@ -19,8 +19,8 @@ def index(request):
 def mainpage(request):
     return render(request,'mainpage')
 
-# def shipment(request):
-#     return render(request,'shipment')
+def shipment(request):
+    return render(request,'shipment')
 
 
 def signup(request):
@@ -68,9 +68,6 @@ def login(request):
             return redirect( '/login')
     
 
-
-
-
 def generate_tracking_number():
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=12))
 
@@ -83,9 +80,6 @@ def create_parcel(request):
             receiver = data.get('receiver_name')
             current_location = data.get('current_location')
             destination_location = data.get('destination_location')
-           
-            
-           
            
             # Ensure all required fields are provided
             if not all([sender, receiver, current_location,destination_location]):
@@ -151,3 +145,49 @@ def track_parcel(request):
             return JsonResponse({'error': str(e)}, status=500)
     else:
         return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+
+# def sender(request):
+#     if request.method == 'POST':
+#         name = request. POST.get('name')
+#         sender_address = request.POST.get('address')
+#         email = request.POST.get('email')
+#         phone_number = request.POST.get('number'))
+        # shipping.save()
+
+#         send = Sender(name=name, sender_address=sender_address,email=email,phone_number=phone_number)
+#         send.save()
+        
+# def receiver(request):
+#     if request.method == 'POST':
+#         receiver_name = request.POST.get('name1')
+#         receiver_address = request.POST.get('address1')
+#         email = request.POST.get('email1')
+#         phone_number = request.POST.get('number1')
+        
+#         receive = Receiver(receiver_name=receiver_name,receiver_address=receiver_address,email=email,phone_number=phone_number)
+#         receive.save()
+
+def shipment(request):
+    if request.method == 'POST':
+        goods = request.POST.get('goods')
+        weight = float(request.POST.get('weight'))
+        package = request.POST.get('package')
+        shipping_cost = request.POST.get('number2')
+
+        name = request.POST.get('name')
+        sender_address = request.POST.get('address')
+        email = request.POST.get('email')
+        phone_number = request.POST.get('number')
+
+        receiver_name = request.POST.get('name1')
+        receiver_address = request.POST.get('address1')
+        email = request.POST.get('email1')
+        phone_number = request.POST.get('number1')
+        
+        
+        shipping = Shipment(goods=goods,weight=weight,package=package,shipping_cost=shipping_cost,name=name, sender_address=sender_address,email=email,phone_number=phone_number,receiver_name=receiver_name,receiver_address=receiver_address)
+        shipping.save()
+        return redirect ('/mainpage')
+   
+    

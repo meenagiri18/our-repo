@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
-import re
+import re,uuid
 
 
 # Create your models here.
@@ -41,3 +41,42 @@ class Tracking(models.Model):
         super().clean()
         if not re.match(r'^[A-Za-z\s]+$', self.location):
             raise ValidationError("Location must contain only letters and spaces.")
+
+# class Sender(models.Model):
+#     name = models.CharField(max_length=100)
+#     sender_address = models.CharField(max_length=100)
+#     email = models.EmailField(max_length=100)
+#     phone_number = models.IntegerField()
+
+# class Receiver(models.Model):
+#     receiver_name = models.CharField(max_length=100)
+#     receiver_address = models.CharField(max_length=100)
+#     email = models.EmailField(max_length=100)
+#     phone_number = models.IntegerField()
+
+class Shipment(models.Model):
+    goods = models.CharField(null=True,max_length=100)
+    weight = models.IntegerField(null=True)
+    package = models.IntegerField(null=True,blank=True)
+    shipping_cost = models.DecimalField(max_digits=1000, decimal_places=2,null=True)
+    
+    name = models.CharField(max_length=100,null=True)
+    sender_address = models.CharField(null=True,max_length=100)
+    email = models.EmailField(null=True)
+    phone_number = models.IntegerField(null=True)
+
+    receiver_name = models.CharField(max_length=100,null=True)
+    receiver_address = models.CharField(null=True,max_length=100)
+    tracking_number = models.CharField(max_length=12, unique=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.tracking_number:
+            self.tracking_number = str(uuid.uuid4()).replace("-", "").upper()[:12]
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.tracking_number} - {self.goods}"
+
+
+   
+

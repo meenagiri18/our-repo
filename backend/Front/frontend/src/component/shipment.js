@@ -16,7 +16,7 @@ export default function Shipment() {
           <div className='section'>
             <p className='container'>Sender Details</p>
             <hr></hr>
-            <Form method='POST'>
+            <Form method='POST' action='http://127.0.0.1:8000/shipment/'>
               <div className='design2'>
 
                 <div className='field'>
@@ -52,19 +52,19 @@ export default function Shipment() {
           <div className='section'>
             <p className='container'>Receiver Details</p>
             <hr></hr>
-            <Form method='POST'>
+            <Form method='POST' action='http://127.0.0.1:8000/shipment/'>
               <div className='d-flex design2'>
 
                 <div className='field'>
-                  <label for="name"> Receiver Name</label>
-                  <input className='' name="name" id="name" type="text" required></input>
+                  <label for="name1"> Receiver Name</label>
+                  <input className='' name="name1" id="name1" type="text" required></input>
                 </div>
 
 
 
                 <div className='field'>
-                  <label for="address"> Receiver address</label>
-                  <input className='' name="address" id="address" type="text" required></input>
+                  <label for="address1"> Receiver address</label>
+                  <input className='' name="address1" id="address1" type="text" required></input>
 
                 </div>
               </div>
@@ -72,13 +72,13 @@ export default function Shipment() {
 
                 <div className='field'>
 
-                  <label for="email">Email</label>
-                  <input className='' name="email" id="email" type="email" required></input>
+                  <label for="email1">Email</label>
+                  <input className='' name="email1" id="email1" type="email" required></input>
                 </div>
 
                 <div className='field'>
-                  <label for="number">Phone number</label>
-                  <input className='' name="number " id="number" type="number" required></input>
+                  <label for="number1">Phone number</label>
+                  <input className='' name="number1 " id="number1" type="number" required></input>
                 </div>
               </div>
             </Form>
@@ -88,7 +88,7 @@ export default function Shipment() {
           <div className='section'>
             <p className='container'>Shipment Details</p>
             <hr></hr>
-            <Form method='POST'>
+            <Form method='POST' action='http://127.0.0.1:8000/shipment/'>
               <div className='d-flex design2'>
 
                 <div className='field'>
@@ -109,8 +109,8 @@ export default function Shipment() {
                   <input className='' name="package" id="package" type="text" required></input>
                 </div>
                 <div className='field'>
-                  <label for="number">Shipment Cost</label>
-                  <input className='' name="number " id="number" type="number" required></input>
+                  <label for="number2">Shipment Cost</label>
+                  <input className='' name="number2" id="number2" type="number" required></input>
                 </div>
               </div>
               <div className='section'>
@@ -122,16 +122,16 @@ export default function Shipment() {
 
 
               </div>
+              <div className='section'>
+
+                 <button type='submit'>Request Pickup</button>
+              </div>
+
             </Form>
           </div>
 
 
-          <div className='section'>
-
-            <button><Link to="" className='log4'>Request Pickup</Link></button>
-          </div>
-
-
+        
         </div >
 
 
