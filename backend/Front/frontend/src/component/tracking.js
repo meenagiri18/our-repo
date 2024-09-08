@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './tracking.css'
 import Navbar from './navbar';
-import MyComponent from './googlemap'
-import { floydWarshall } from './algorithm';
 import Footer from './footer'
 
 

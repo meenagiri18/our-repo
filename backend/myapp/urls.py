@@ -1,9 +1,10 @@
-from django.urls import path,re_path
+from django.urls import path, include
 from . import views
-from .views import create_parcel
-from .views import track_parcel
+from rest_framework.routers import DefaultRouter
+from .views import ShipmentViewSet
 
-
+router = DefaultRouter()
+router.register(r'shipments', ShipmentViewSet)
 
 urlpatterns = [
    
@@ -12,10 +13,7 @@ urlpatterns = [
     path('signup/',views.signup, name= 'signup'),
     path('login/',views.login, name= 'login'),
     path('mainpage/',views.mainpage, name='mainpage'),
-    path('api/create_parcel/',views.create_parcel,name='create_parcel'),
-    path('api/track_parcel/',views.track_parcel, name='track_parcel'),
     path('shipment/',views.shipment, name = 'shipment'), 
-    # path('shipment/',views.sender, name = 'sender'), 
-    # path('shipment/',views.shipment, name = 'shipment'), 
+    path('api/', include(router.urls)),
 
 ]

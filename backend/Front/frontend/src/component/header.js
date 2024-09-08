@@ -23,12 +23,9 @@ export default function Header() {
                 <div>
                     <Link to="/shipment" className='any'>Start Shipment</Link>
                 </div>
-
+               
                 <div>
-                    <Link to="/api/create_parcel" className='any'>Parcel Creation</Link>
-                </div>
-                <div>
-                    <Link to="/api/track_parcel" className='any'>Tracking</Link>
+                    <Link to="/track" className='any'>Tracking</Link>
                 </div>
                 <div>
                     <Link to="/contact" className='any'>Contact Us</Link>
