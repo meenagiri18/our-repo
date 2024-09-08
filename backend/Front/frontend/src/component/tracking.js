@@ -15,8 +15,9 @@ const TrackParcel = () => {
       setTrackingInfo(response.data);
       setError(null); // Reset error in case of a successful request
     } catch (err) {
-      setError(err);
-      setTrackingInfo(null); // Reset tracking info in case of an error
+      console.error("Error fetching tracking info:", err); // Log error for debugging
+      setError(err.response ? err.response.data : "An error occurred");
+      setTrackingInfo(null); // Reset tracking info on error 
     }
   };
 
@@ -35,13 +36,14 @@ const TrackParcel = () => {
 
       <div className="tracking-form-container">
         <h1>TRACK YOUR PRODUCT</h1>
-        <form onSubmit={handleSubmit}> {/* Form submission handler */}
+        <form method='POST' action = 'http://127.0.0.1:8000/track/' > {/* Form submission handler */}
           <div className='container-box'>
             <div className='container-box2 w-50'>
               <input
                 className='p-3 w-100'
                 type="text"
                 id="tracking-number"
+                name="tracking_number"
                 placeholder='Enter Tracking Code'
                 value={trackingNumber} // Controlled input
                 onChange={(e) => setTrackingNumber(e.target.value)} // Update local state on change

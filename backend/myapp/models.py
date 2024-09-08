@@ -5,6 +5,24 @@ import uuid
 
 # Create your models here.
 
+class Location(models.Model):
+    name = models.CharField(max_length=100)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+
+    def __str__(self):
+        return self.name
+
+class Distance(models.Model):
+    from_location = models.ForeignKey(Location, related_name='distances_from', on_delete=models.CASCADE)
+    to_location = models.ForeignKey(Location, related_name='distances_to', on_delete=models.CASCADE)
+    distance = models.FloatField()  # Distance between the locations
+
+    def __str__(self):
+        return f"{self.from_location} to {self.to_location}: {self.distance}"
+
+
+
 class Shipment(models.Model):
     goods = models.CharField(null=True,max_length=100)
     weight = models.IntegerField(null=True)
@@ -44,10 +62,6 @@ class Shipment(models.Model):
     def __str__(self):
         return f"{self.tracking_number} - {self.goods}"
 
-class Route(models.Model):
-    start_location = models.CharField(max_length=255)
-    end_location = models.CharField(max_length=255)
-    distance = models.FloatField()  # Distance in kilometers or miles
 
 
 
