@@ -30,6 +30,9 @@ export default function Header() {
                 <div>
                     <Link to="/contact" className='any'>Contact Us</Link>
                 </div>
+                <div>
+                    <Link to="/route" className='any'>Route</Link>
+                </div>
 
             </div>
             <div className=' btn'>

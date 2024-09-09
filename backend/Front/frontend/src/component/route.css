@@ -1,0 +1,31 @@
+.design3{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 50px;
+
+
+}
+input{
+    width: 400px;
+    border-radius: 7px;
+    padding: 10px;
+    
+}
+.main-container2{
+    background-color: skyblue;
+    padding: 0px 10px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    gap:55px;
+    height: 100vh;
+
+}
+.main2{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 90px;
+    background-color: rgb(230, 230, 221);
+    padding-bottom: 50px;
+    width: 65%;
+   
+}

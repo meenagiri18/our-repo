@@ -1,10 +1,40 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Form } from 'react-bootstrap';
 import Navbar from './navbar';
 import './shipment.css';
 import Footer from './footer';
 
 export default function Shipment() {
+  const [weight, setWeight] = useState(''); 
+  const [cost, setCost] = useState(0); 
+  const [errorMessage, setErrorMessage] = useState(''); 
+
+  
+  const calculateCost = (weightValue) => {
+    const costPerKg = 50; 
+    const totalCost = weightValue * costPerKg;
+    setCost(totalCost); 
+  };
+
+ 
+  const handleWeightChange = (e) => {
+    const weightValue = e.target.value;
+    setWeight(weightValue); 
+
+    
+    if (weightValue > 25) {
+      setErrorMessage('The maximum allowed weight is 25 kg.');
+      setCost(0); 
+    } else {
+      setErrorMessage(''); 
+      if (weightValue > 0) {
+        calculateCost(weightValue);
+      } else { 
+        setCost(0); 
+      }
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -75,9 +105,17 @@ export default function Shipment() {
 
                   <div className="field">
                     <label htmlFor="weight">Total Weight in KG</label>
-                    <input name="weight" id="weight" type="text" required />
+                    <input
+                      name="weight"
+                      id="weight"
+                      type="number"
+                      value={weight}
+                      onChange={handleWeightChange}
+                      required
+                    />
                   </div>
                 </div>
+                {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
                 <div className="d-flex design2">
                   <div className="field">
                     <label htmlFor="package">Package Dimensions in cm</label>
@@ -86,7 +124,13 @@ export default function Shipment() {
 
                   <div className="field">
                     <label htmlFor="number2">Shipment Cost</label>
-                    <input name="number2" id="number2" type="number" required />
+                    <input
+                      name="number2"
+                      id="number2"
+                      type="number"
+                      value={cost} 
+                      readOnly
+                    />
                   </div>
                 </div>
               </div>

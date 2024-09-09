@@ -1,89 +1,100 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import './tracking.css';
+import './tracking.css'
 import Navbar from './navbar';
-import Footer from './footer';
+import Footer from './footer'
 
-const TrackParcel = () => {
-  const [trackingNumber, setTrackingNumber] = useState(''); // Local state for tracking number input
-  const [trackingInfo, setTrackingInfo] = useState(null);
-  const [error, setError] = useState(null);
 
-  const fetchTrackingInfo = async (number) => {
-    try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/shipments/${number}/`);
-      setTrackingInfo(response.data);
-      setError(null); // Reset error in case of a successful request
-    } catch (err) {
-      console.error("Error fetching tracking info:", err); // Log error for debugging
-      setError(err.response ? err.response.data : "An error occurred");
-      setTrackingInfo(null); // Reset tracking info on error 
-    }
-  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (trackingNumber) {
-      fetchTrackingInfo(trackingNumber); // Fetch data based on the tracking number
-    }
-  };
 
-  return (
-    <div>
-      <Navbar />
+const TrackingForm = () => {
+    const [trackingNumber, setTrackingNumber] = useState('');
+    const [trackingDetails, setTrackingDetails] = useState('');
+    const [error, setError] = useState('');
 
-      <div className='tracking-container'>PRODUCT TRACKING</div>
+    const handleInputChange = (e) => {
+        setTrackingNumber(e.target.value);
+    };
 
-      <div className="tracking-form-container">
-        <h1>TRACK YOUR PRODUCT</h1>
-        <form method='POST' action = 'http://127.0.0.1:8000/track/' > {/* Form submission handler */}
-          <div className='container-box'>
-            <div className='container-box2 w-50'>
-              <input
-                className='p-3 w-100'
-                type="text"
-                id="tracking-number"
-                name="tracking_number"
-                placeholder='Enter Tracking Code'
-                value={trackingNumber} // Controlled input
-                onChange={(e) => setTrackingNumber(e.target.value)} // Update local state on change
-                required
-              />
-            </div>
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-            <div className='btnnn w-50'>
-              <button type="submit" className='btn-last w-100'>
-                TRACK YOUR PRODUCT
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
+        setTrackingDetails('');
+        setError('');
 
-      {/* Display error or loading state */}
-      {error ? <div>Error: {error.message}</div> : !trackingInfo && <div>Loading...</div>}
+        try {
+            const response = await fetch('http://127.0.0.1:8000/api/track_parcel/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ tracking_number: trackingNumber }),
+            });
 
-      {/* Display tracking information if available */}
-      {trackingInfo && (
+            if (response.ok) {
+                const data = await response.json();
+                setTrackingDetails(data);
+            } else {
+                setError('Tracking number not found or error fetching data.');
+            }
+        } catch (err) {
+            setError('An error occurred while tracking the package.');
+        }
+    };
+
+
+    return (
         <div>
-          <h1>Tracking Information</h1>
-          <p>Tracking Number: {trackingInfo.shipment.tracking_number}</p>
-          <p>Goods: {trackingInfo.shipment.goods}</p>
-          <p>Weight: {trackingInfo.shipment.weight}</p>
-          <p>Package Dimensions: {trackingInfo.shipment.package}</p>
-          <p>Shipping Cost: {trackingInfo.shipment.shipping_cost}</p>
-          <p>Sender: {trackingInfo.shipment.sender_name}, {trackingInfo.shipment.sender_address}</p>
-          <p>Receiver: {trackingInfo.shipment.receiver_name}, {trackingInfo.shipment.receiver_address}</p>
-          <p>Status: {trackingInfo.shipment.status}</p>
-          <p>Current Location: {trackingInfo.shipment.current_location}</p>
-          <p>Delivery Date: {trackingInfo.shipment.delivery_date}</p>
-          <p>Shortest Distance: {trackingInfo.shortest_distance}</p>
+            <div><Navbar /></div>
+            <div className='tracking-container'>PRODUCT TRACKING</div>
+            
+            <div className="tracking-form-container">
+                <h1>TRACK YOUR PRODUCT</h1>
+                    <form method='POST' onSubmit={handleSubmit} action='http://127.0.0.1:8000/api/track_parcel/'>
+                    <div className='container-box'>
+                        <div className='container-box2 w-50'>
+                            <input className='p-3 w-100'
+                                type="text"
+                                id="tracking-number"
+                                placeholder='Enter Tracking Code'
+                                value={trackingNumber}
+                                onChange={handleInputChange}
+                                required
+
+                            />
+                        </div>
+
+                        <div  className='btnnn w-50'>
+                            <button type="submit" className='btn-last w-100'>TRACK YOUR PRODUCT</button>
+                        </div>
+
+
+                        </div>
+                    </form>
+                
+
+
+                {error && <p className="error">{error}</p>}
+
+                {trackingDetails && (
+                    <div className="tracking-details">
+                        <h3>Tracking Information</h3>
+                        <p>Status: {trackingDetails.status}</p>
+                        <p>Current Location: {trackingDetails.location}</p>
+                        <p>Expected Delivery: {trackingDetails.expected_delivery}</p>
+                        {trackingDetails.destination && (
+                            <p>Destination Location: {trackingDetails.destination}</p> 
+                        )}
+                        
+                
+                       
+                        
+                    </div>
+                )}
+                
+            </div>
+           <div><Footer/></div>
+
         </div>
-      )}
-
-      <Footer />
-    </div>
-  );
+    );
 };
-
-export default TrackParcel;
+export default TrackingForm;

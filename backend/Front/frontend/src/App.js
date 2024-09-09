@@ -8,6 +8,7 @@ import About from './component/about'
 import TrackParcel from './component/tracking';
 import Shipment from './component/shipment'
 import Contact from './component/contact'
+import RouteForm from './component/route'
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/shipment" element={<Shipment />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/track" element={<TrackParcel />}> </Route>
+          <Route path="/route" element={<RouteForm />}> </Route>
          
           
         </Routes>
