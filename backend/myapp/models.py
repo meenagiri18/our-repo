@@ -48,3 +48,13 @@ class Shipment(models.Model):
         return f"{self.tracking_number} - {self.goods}"
 
 
+class RouteResult(models.Model):
+    flocation = models.CharField(max_length=255)
+    tlocation = models.CharField(max_length=255)
+    shortest_distance = models.FloatField()
+    path = models.TextField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"From {self.flocation} to {self.tlocation} (Distance: {self.shortest_distance})"

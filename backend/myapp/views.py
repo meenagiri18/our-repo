@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.http import JsonResponse
 import json
-from .models import Shipment
+from .models import *
 from .algorithm import *
 from django.views.decorators.csrf import csrf_exempt
 
@@ -87,15 +87,15 @@ def shipment(request):
         return redirect ('/mainpage')
 
 
+
+
 @csrf_exempt
 def route(request):
     if request.method == 'POST':
-    
-        try:
-            data = json.loads(request.body)
-            print(data)
-            flocation = data.get('Flocation')
-            tlocation = data.get('Tlocation')
+        
+        
+            flocation = request.POST.get('Flocation')
+            tlocation = request.POST.get('Tlocation')
             if not flocation or not tlocation:
                 return JsonResponse({'error': 'Missing locations'}, status=400)
 
@@ -105,13 +105,22 @@ def route(request):
             if flocation in shortest_paths and tlocation in shortest_paths[flocation]:
                 shortest_distance = shortest_paths[flocation][tlocation]
                 path = construct_path(next_node, flocation, tlocation)
+
+                # Save the result to the database
+                RouteResult.objects.create(
+                    flocation=flocation,
+                    tlocation=tlocation,
+                    shortest_distance=shortest_distance,
+                    path=str(path)  # Store the path as a string or JSON if necessary
+                )
+
                 return JsonResponse({'shortestPath': shortest_distance, 'path': path})
-            else:
-                return JsonResponse({'error': 'Invalid locations'}, status=400)
-        except json.JSONDecodeError:
-            return JsonResponse({'error': 'Invalid JSON'}, status=400)
-    else:
-        return JsonResponse({'error': 'Invalid request method'}, status=405)
+            
+def route_api(request):
+    routeTracking = RouteResult.objects.all().values()
+    paths = list(routeTracking)
+    return JsonResponse(paths,safe=False)
+
 
 # def track_parcel(request, tracking_number):
 #     shipment = Shipment.objects.get(tracking_number=tracking_number)

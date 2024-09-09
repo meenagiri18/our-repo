@@ -28,7 +28,11 @@ export default function RouteForm() {
   //   }
   // };
   useEffect(() => {
-    axios.get('').then((response) =>{
+    axios.get('http://127.0.0.1:8000/route/',{flocation,tlocation},{
+      headers:{
+        'Content-Type':'application/json',
+      },
+    }).then((response) =>{
       setShortestPath(response.data);
 
 
@@ -48,7 +52,7 @@ export default function RouteForm() {
       <div className='main-container2'>
         <div className='main2'>
 
-          <form method="POST" action='' >
+          <form method="POST" action='http://127.0.0.1:8000/route/' >
             <div className='design3'>
               <div className='field'>
                 <label htmlFor='flocation'>From location</label>

@@ -12,6 +12,7 @@ urlpatterns = [
     path('shipment/',views.shipment, name = 'shipment'), 
     # path('api/calculate_route/', views.calculate_route, name='calculate_route'),
     path('route/', views.route, name='route'),
+    path('api/route_api/',views.route_api, name='route_api'),
 
     # path('track/<str:tracking_number>/', views.track_parcel, name='track_parcel'),
     # path('track/', views.track, name ='track')

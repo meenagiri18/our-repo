@@ -7,3 +7,4 @@ from .models import *
 class ShipmentAdmin(admin.ModelAdmin):
     list_display =['tracking_number','goods','sender_name','receiver_name','shipping_cost']
     
+admin.site.register(RouteResult)
