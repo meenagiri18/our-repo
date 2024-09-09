@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.http import JsonResponse
-# import random
-# import string
-# import json
-from .models import Shipment,Location,Distance
-from .utils import floyd_warshall
+import json
+from .models import Shipment
+from .algorithm import *
+from django.views.decorators.csrf import csrf_exempt
 
 
 
@@ -16,8 +15,6 @@ def index(request):
 def mainpage(request):
     return render(request,'mainpage')
 
-def shipment(request):
-    return render(request,'shipment')
 
 
 
@@ -90,51 +87,77 @@ def shipment(request):
         return redirect ('/mainpage')
 
 
-def track_parcel(request, tracking_number):
-    shipment = Shipment.objects.get(tracking_number=tracking_number)
-    
-    # Get locations
-    locations = Location.objects.all()
-    distances = Distance.objects.all()
-    
-    # Compute shortest paths
-    dist_matrix = floyd_warshall(locations, distances)
-    
-    # Get location indices
-    location_index = {location.name: idx for idx, location in enumerate(locations)}
-    
-    current_location = shipment.current_location
-    receiver_address = shipment.receiver_address
-    
-    # Find shortest path
-    if current_location in location_index and receiver_address in location_index:
-        i = location_index[current_location]
-        j = location_index[receiver_address]
-        shortest_distance = dist_matrix[i, j]
-        
-        response = {
-            'success': True,
-            'shortest_distance': shortest_distance
-        }
-    else:
-        response = {
-            'success': False,
-            'error': 'Invalid locations',
-            'current_location': current_location,
-            'receiver_address': receiver_address,
-            'valid_locations': list(location_index.keys())
-        }
-    
-    return JsonResponse(response)
-
-# track bhanney view
-def track(request):
+@csrf_exempt
+def route(request):
     if request.method == 'POST':
-        tracking_number = request.POST.get('tracking_number')
-        if tracking_number == Shipment.objects.get(tracking_number):
-            return redirect('/')
+    
+        try:
+            data = json.loads(request.body)
+            print(data)
+            flocation = data.get('Flocation')
+            tlocation = data.get('Tlocation')
+            if not flocation or not tlocation:
+                return JsonResponse({'error': 'Missing locations'}, status=400)
+
+            # Run Floyd-Warshall algorithm
+            shortest_paths, next_node = floyd_warshall()
+
+            if flocation in shortest_paths and tlocation in shortest_paths[flocation]:
+                shortest_distance = shortest_paths[flocation][tlocation]
+                path = construct_path(next_node, flocation, tlocation)
+                return JsonResponse({'shortestPath': shortest_distance, 'path': path})
+            else:
+                return JsonResponse({'error': 'Invalid locations'}, status=400)
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON'}, status=400)
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+# def track_parcel(request, tracking_number):
+#     shipment = Shipment.objects.get(tracking_number=tracking_number)
+    
+#     # Get locations
+#     locations = Location.objects.all()
+#     distances = Distance.objects.all()
+    
+#     # Compute shortest paths
+#     dist_matrix = floyd_warshall(locations, distances)
+    
+#     # Get location indices
+#     location_index = {location.name: idx for idx, location in enumerate(locations)}
+    
+#     current_location = shipment.current_location
+#     receiver_address = shipment.receiver_address
+    
+#     # Find shortest path
+#     if current_location in location_index and receiver_address in location_index:
+#         i = location_index[current_location]
+#         j = location_index[receiver_address]
+#         shortest_distance = dist_matrix[i, j]
+        
+#         response = {
+#             'success': True,
+#             'shortest_distance': shortest_distance
+#         }
+#     else:
+#         response = {
+#             'success': False,
+#             'error': 'Invalid locations',
+#             'current_location': current_location,
+#             'receiver_address': receiver_address,
+#             'valid_locations': list(location_index.keys())
+#         }
+    
+#     return JsonResponse(response)
+
+# # track bhanney view
+# def track(request):
+#     if request.method == 'POST':
+#         tracking_number = request.POST.get('tracking_number')
+#         if tracking_number == Shipment.objects.get(tracking_number):
+#             return redirect('/')
  
-    # tracking = track(tracking_number)
+#     # tracking = track(tracking_number)
 
 
 

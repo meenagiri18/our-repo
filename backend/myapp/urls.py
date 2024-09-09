@@ -10,8 +10,11 @@ urlpatterns = [
     path('login/',views.login, name= 'login'),
     path('mainpage/',views.mainpage, name='mainpage'),
     path('shipment/',views.shipment, name = 'shipment'), 
-    path('track/<str:tracking_number>/', views.track_parcel, name='track_parcel'),
-    path('track/', views.track, name ='track')
+    # path('api/calculate_route/', views.calculate_route, name='calculate_route'),
+    path('route/', views.route, name='route'),
+
+    # path('track/<str:tracking_number>/', views.track_parcel, name='track_parcel'),
+    # path('track/', views.track, name ='track')
    
 
 ]
