@@ -9,4 +9,3 @@ class ShipmentAdmin(admin.ModelAdmin):
     
 admin.site.register(Location)
 admin.site.register(Distance)
-

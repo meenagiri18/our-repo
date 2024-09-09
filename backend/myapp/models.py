@@ -5,21 +5,6 @@ import uuid
 
 # Create your models here.
 
-class Location(models.Model):
-    name = models.CharField(max_length=100)
-    latitude = models.FloatField()
-    longitude = models.FloatField()
-
-    def __str__(self):
-        return self.name
-
-class Distance(models.Model):
-    from_location = models.ForeignKey(Location, related_name='distances_from', on_delete=models.CASCADE)
-    to_location = models.ForeignKey(Location, related_name='distances_to', on_delete=models.CASCADE)
-    distance = models.FloatField()  # Distance between the locations
-
-    def __str__(self):
-        return f"{self.from_location} to {self.to_location}: {self.distance}"
 
 
 
@@ -61,6 +46,28 @@ class Shipment(models.Model):
 
     def __str__(self):
         return f"{self.tracking_number} - {self.goods}"
+
+
+# Location Model
+class Location(models.Model):
+    name = models.CharField(max_length=100, unique=True)  # City name, e.g., Butwal, Kathmandu
+    latitude = models.FloatField()  # Latitude coordinate
+    longitude = models.FloatField()  # Longitude coordinate
+
+    def __str__(self):
+        return self.name
+
+
+class Distance(models.Model):
+    from_location = models.CharField(max_length=100)  # Store location names as strings
+    to_location = models.CharField(max_length=100)    # Store destination location names
+    distance = models.FloatField()                    # Distance between the two locations in kilometers
+
+    class Meta:
+        unique_together = ('from_location', 'to_location')  # Prevent duplicate distance entries
+
+    def __str__(self):
+        return f"Distance from {self.from_location} to {self.to_location}: {self.distance} km"
 
 
 
