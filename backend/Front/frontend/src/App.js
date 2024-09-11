@@ -9,6 +9,7 @@ import TrackParcel from './component/tracking';
 import Shipment from './component/shipment'
 import Contact from './component/contact'
 import RouteForm from './component/route'
+import Shortest from './component/shortest';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/track" element={<TrackParcel />}> </Route>
           <Route path="/route" element={<RouteForm />}> </Route>
+          <Route path="/shortest" element={<Shortest />}> </Route>
          
           
         </Routes>

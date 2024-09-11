@@ -4,10 +4,6 @@ import uuid
 
 
 # Create your models here.
-
-
-
-
 class Shipment(models.Model):
     goods = models.CharField(null=True,max_length=100)
     weight = models.IntegerField(null=True)

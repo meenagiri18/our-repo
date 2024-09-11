@@ -114,7 +114,8 @@ def route(request):
                     path=str(path)  # Store the path as a string or JSON if necessary
                 )
 
-                return JsonResponse({'shortestPath': shortest_distance, 'path': path})
+                # return JsonResponse({'shortestPath': shortest_distance, 'path': path}) 
+                return redirect("/shortest") 
             
 def route_api(request):
     routeTracking = RouteResult.objects.all().values()
@@ -168,5 +169,12 @@ def route_api(request):
  
 #     # tracking = track(tracking_number)
 
+def track(request):
+    return redirect('/track')
 
+
+def track_api(request):
+    status = Shipment.objects.all().values()
+    paths = list(status)
+    return JsonResponse(paths,safe=False)
 

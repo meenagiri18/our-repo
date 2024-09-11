@@ -11,7 +11,7 @@ export default function Navbar() {
 
                 <div className='d-flex listing'>
                     <div>
-                        <Link to="/homepage" className='any' >Home</Link>
+                        <Link to="/" className='any' >Home</Link>
                     </div>
 
                     <div>
@@ -20,17 +20,17 @@ export default function Navbar() {
                     <div>
                         <Link to="/shipment" className='any'>Start Shipment</Link>
                     </div>
-
-
-
-                   
                     <div>
                         <Link to="/track" className='any'>Tracking</Link>
-
                     </div>
                     <div>
                         <Link to="/contact" className='any'>Contact Us</Link>
                     </div>
+                    <div>
+                        <Link to="/route" className='any'>Route</Link>
+                    </div>
+
+
                 </div>
             </div>
         </div>

@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import { Form } from 'react-bootstrap';
 import Navbar from './navbar';
 import './shipment.css';
 import Footer from './footer';
@@ -40,10 +39,11 @@ export default function Shipment() {
       <Navbar />
       <div className="main-container">
         <div className="border border-2 main">
-          <div className="section">
+          
+            <form method="POST" action="http://127.0.0.1:8000/shipment/" className='w-100 container'>
             <p className="container">Sender Details</p>
             <hr />
-            <Form method="POST" action="http://127.0.0.1:8000/shipment/">
+            <div className="section">
               <div className="design2">
                 <div className="field">
                   <label htmlFor="name">Sender Name</label>
@@ -66,10 +66,10 @@ export default function Shipment() {
                   <input name="number" id="number" type="number" required />
                 </div>
               </div>
-
-              <div className="section">
+              </div>
                 <p className="container">Receiver Details</p>
                 <hr />
+              <div className="section">
                 <div className="d-flex design2">
                   <div className="field">
                     <label htmlFor="name1">Receiver Name</label>
@@ -94,9 +94,9 @@ export default function Shipment() {
                 </div>
               </div>
 
-              <div className="section">
                 <p className="container">Shipment Details</p>
                 <hr />
+              <div className="section">
                 <div className="d-flex design2">
                   <div className="field">
                     <label htmlFor="goods">Goods Included in Shipment</label>
@@ -135,18 +135,19 @@ export default function Shipment() {
                 </div>
               </div>
 
-              <div className="section">
-                <label htmlFor="terms">
-                  I agree to the ExpressTrack Terms and Conditions
-                </label>
+              <div className="section6 container">
                 <input type="checkbox" name="terms" required />
+                <div htmlFor="terms">
+                  I agree to the ExpressTrack Terms and Conditions
+                </div>
               </div>
 
               <div className="section">
                 <button type="submit">Request Pickup</button>
               </div>
-            </Form>
-          </div>
+             
+            </form>
+          
         </div>
       </div>
       <Footer />

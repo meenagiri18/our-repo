@@ -1,31 +1,57 @@
 .design3{
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
-    gap: 50px;
+    gap: 20px;
 
 
 }
 input{
-    width: 400px;
+   
     border-radius: 7px;
     padding: 10px;
+    width: 100%;
     
 }
 .main-container2{
     background-color: skyblue;
-    padding: 0px 10px;
-    padding-bottom: 20px;
-    border-radius: 10px;
-    gap:55px;
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
 .main2{
     display: flex;
-    justify-content: space-evenly;
-    padding-top: 90px;
+    justify-content: center;
+    align-items: center;
     background-color: rgb(230, 230, 221);
-    padding-bottom: 50px;
-    width: 65%;
+    border-radius: 20px;
+    width: 50%;
+    height: 50vh;
    
+}
+.field2{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+   gap: 10px;
+}
+form{
+    width: 70%;
+}
+.field2>label{
+    font-size: x-large;
+    font-weight: bold;
+}
+.check{
+ display: flex;
+ justify-content: center;
+}
+.check>button{
+    font-size: larger;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

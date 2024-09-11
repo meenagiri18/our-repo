@@ -14,7 +14,7 @@ export default function Header() {
             </div>
             <div className='d-flex listing'>
                 <div>
-                    <Link to="/homepage" className='any' >Home</Link>
+                    <Link to="/" className='any' >Home</Link>
                 </div>
 
                 <div>

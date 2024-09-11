@@ -5,6 +5,6 @@ from .models import *
 @admin.register(Shipment)
 
 class ShipmentAdmin(admin.ModelAdmin):
-    list_display =['tracking_number','goods','sender_name','receiver_name','shipping_cost']
+    list_display =['tracking_number','goods','sender_name','receiver_name', 'status','shipping_cost']
     
 admin.site.register(RouteResult)
