@@ -13,10 +13,9 @@ urlpatterns = [
     # path('api/calculate_route/', views.calculate_route, name='calculate_route'),
     path('route/', views.route, name='route'),
     path('api/route_api/',views.route_api, name='route_api'),
-
     path('track/', views.track, name ='track'),
-    path('api/track_api/', views.track_api, name ='track_api')
-   
+    path('api/track_api/', views.track_api, name ='track_api'),
+    path('api/trackingN_api/<str:tracking_number>/', views.trackingN_api, name ='trackingN_api'),
    
 
 ]

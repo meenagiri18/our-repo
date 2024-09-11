@@ -92,8 +92,7 @@ def shipment(request):
 @csrf_exempt
 def route(request):
     if request.method == 'POST':
-        
-        
+    
             flocation = request.POST.get('Flocation')
             tlocation = request.POST.get('Tlocation')
             if not flocation or not tlocation:
@@ -123,51 +122,6 @@ def route_api(request):
     return JsonResponse(paths,safe=False)
 
 
-# def track_parcel(request, tracking_number):
-#     shipment = Shipment.objects.get(tracking_number=tracking_number)
-    
-#     # Get locations
-#     locations = Location.objects.all()
-#     distances = Distance.objects.all()
-    
-#     # Compute shortest paths
-#     dist_matrix = floyd_warshall(locations, distances)
-    
-#     # Get location indices
-#     location_index = {location.name: idx for idx, location in enumerate(locations)}
-    
-#     current_location = shipment.current_location
-#     receiver_address = shipment.receiver_address
-    
-#     # Find shortest path
-#     if current_location in location_index and receiver_address in location_index:
-#         i = location_index[current_location]
-#         j = location_index[receiver_address]
-#         shortest_distance = dist_matrix[i, j]
-        
-#         response = {
-#             'success': True,
-#             'shortest_distance': shortest_distance
-#         }
-#     else:
-#         response = {
-#             'success': False,
-#             'error': 'Invalid locations',
-#             'current_location': current_location,
-#             'receiver_address': receiver_address,
-#             'valid_locations': list(location_index.keys())
-#         }
-    
-#     return JsonResponse(response)
-
-# # track bhanney view
-# def track(request):
-#     if request.method == 'POST':
-#         tracking_number = request.POST.get('tracking_number')
-#         if tracking_number == Shipment.objects.get(tracking_number):
-#             return redirect('/')
- 
-#     # tracking = track(tracking_number)
 
 def track(request):
     return redirect('/track')
@@ -177,4 +131,16 @@ def track_api(request):
     status = Shipment.objects.all().values()
     paths = list(status)
     return JsonResponse(paths,safe=False)
+
+
+def trackingN_api(request,tracking_number):
+    tracking_no = Shipment.objects.get(tracking_number=tracking_number)
+    trackingg = {
+                'tracking_number':tracking_no.tracking_number,
+                'status':tracking_no.status,
+                'current_location':tracking_no.current_location,
+                'delivery_date':tracking_no.delivery_date,
+            }
+            
+    return JsonResponse(trackingg,safe=False)
 

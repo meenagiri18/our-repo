@@ -21,8 +21,10 @@ class Shipment(models.Model):
 
     # New fields for status, current location, and delivery date
     status_choices = [
+        ('CREATED', 'Created'),
         ('PENDING', 'Pending'),
         ('SHIPPED', 'Shipped'),
+        ('IN TRANSIT','Transit'),
         ('DELIVERED', 'Delivered'),
     ]
     status = models.CharField(max_length=10, choices=status_choices, default='PENDING')
