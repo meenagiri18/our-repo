@@ -124,7 +124,8 @@ div>.btn1 {
     align-items: center;
     justify-content: center;
     text-align: justify;
-    height: 60vh;
+    padding: 30px 0px;
+    
 }
 
 .description_box {
@@ -133,10 +134,9 @@ div>.btn1 {
     color: black;
     width: 50%;
     padding: 40px;
-    border: 2px solid rgb(2, 2, 60);
     border-radius: 18px;
     box-shadow: 0px 4px 8px;
-
+    
 }
 
 

@@ -37,7 +37,7 @@ const TrackingParcel = () => {
                 case "SHIPPED":
                     setCurrentStep(3);
                     break;
-                case "TRANSIT":
+                case "IN TRANSIT":
                     setCurrentStep(4);
                     break;
                 case "DELIVERED":
