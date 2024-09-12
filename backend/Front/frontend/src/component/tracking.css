@@ -49,3 +49,66 @@
    color: white;
    background-color: skyblue;
 }
+
+ .main-section {
+     background-color: skyblue;
+      height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .header {
+          width:80%;
+          /* border:2px solid red; */
+        display: flex;
+        justify-content: space-between;
+      }
+     
+      .main-header {
+        /* border: 2px solid red; */
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 55%;
+      }
+     
+      .steps {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: gray;
+        color: black;
+        border-radius: 100%;
+        z-index: 30;
+      }
+     
+      .active .steps {
+        background-color: yellow;
+      }
+      .complete .steps {
+        background-color: green;
+      }
+      .complete p {
+        background-color: black;
+      }
+     
+      .main-header:not(:first-child)::before {
+        content: "";
+        position: absolute;
+        top: 30%;
+        right: 50%;
+        height: 3px;
+        background-color: black;
+        width: 100%;
+      }
+     
+      .complete:not(:first-child)::before ,
+      .active:not(:first-child)::before {
+        background-color: green;
+      }
+     

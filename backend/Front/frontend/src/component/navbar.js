@@ -23,9 +23,7 @@ export default function Navbar() {
                     <div>
                         <Link to="/track" className='any'>Tracking</Link>
                     </div>
-                    <div>
-                        <Link to="/contact" className='any'>Contact Us</Link>
-                    </div>
+                   
                     <div>
                         <Link to="/route" className='any'>Route</Link>
                     </div>
