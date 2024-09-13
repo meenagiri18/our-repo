@@ -23,7 +23,7 @@ export default function Signup() {
     if (data.success) {
       window.location.href = data.redirect; // Redirect on successful login
     } else {
-      setErrorMessage(data.error || data.error1 || data.error3); // Set error message
+      setErrorMessage(data.error || data.error1 || data.error2 || data.error3); // Set error message
     }
   };
 

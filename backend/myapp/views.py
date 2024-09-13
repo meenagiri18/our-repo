@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.http import JsonResponse
-import json
+import re
 from .models import *
 from .algorithm import *
 from django.views.decorators.csrf import csrf_exempt
+from django.core.validators import EmailValidator
+
+
 
 
 
@@ -17,21 +20,31 @@ def mainpage(request):
 
 
 
-
-
 def signup(request):
     if request.method== 'POST':
         email= request.POST.get('email')
         password= request.POST.get('Password')
         password2= request.POST.get('password2')
 
+        email_validator = EmailValidator()
+        try:
+            email_validator(email)
+        except ValidationError:
+            return JsonResponse({'success': False, 'error2': 'Invalid email format'})
+
         if password != password2:
             return JsonResponse({'success': False, 'error': 'Passwords do not match'})
-        if len(password)<8:
-            return JsonResponse({'success':False, 'error3':'Password must be of 8 characters'})
-
+        
         if User.objects.filter(username=email).exists():
             return JsonResponse({'success': False, 'error1': 'Email already exists'})
+        
+        pattern = r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+        if not re.match(pattern, password):
+            return JsonResponse({
+                'success': False, 
+                'error3': 'Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character.'
+            })
+
 
         user = User.objects.create_user(username=email, password=password)
         user.save()
@@ -69,7 +82,7 @@ def shipment(request):
         goods = request.POST.get('goods')
         weight = float(request.POST.get('weight'))
         package = request.POST.get('package')
-        shipping_cost = request.POST.get('number2')
+        shipping_cost = float(request.POST.get('number2'))
 
         sender_name = request.POST.get('sender')
         sender_address = request.POST.get('address')
@@ -80,6 +93,11 @@ def shipment(request):
         receiver_address = request.POST.get('address1')
         email = request.POST.get('email1')
         phone_number = request.POST.get('number1')
+
+        if weight < 0:
+            return JsonResponse({'success':False ,'error4':'Weight cannot be less than zero.'})
+        if shipping_cost < 0:
+            return JsonResponse({'success':False ,'error5':'Shipping cost cannot be negative.'})
         
         
         shipping = Shipment(goods=goods,weight=weight,package=package,shipping_cost=shipping_cost,sender_name=sender_name, sender_address=sender_address,email=email,phone_number=phone_number,receiver_name=receiver_name,receiver_address=receiver_address)
