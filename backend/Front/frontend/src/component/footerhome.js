@@ -4,28 +4,28 @@ import { FaFacebookSquare, FaGithubSquare,  FaInstagramSquare } from "react-icon
 import { FaSquareXTwitter } from "react-icons/fa6";
 import {Link} from "react-router-dom"
 
-export default function Footer() {
+export default function Footerhome() {
   return (
     <div>
-      <div className='footer_d'>
+        <div className='footer_d'>
         <div className='footer'>
         <div>
                 <Link to="/" className='any' >Home</Link>
             </div>
 
             <div>
-                <Link to="/about" className='any'>About</Link>
+                <Link to="/login" className='any'>About</Link>
             </div>
             <div>
-                <Link to="/shipment" className='any'>Start Shipment</Link>
+                <Link to="/login" className='any'>Start Shipment</Link>
             </div> 
 
             
             <div>
-                <Link to="/track" className='any'>Tracking</Link>
+                <Link to="/login" className='any'>Tracking</Link>
             </div>
             <div>
-                <Link to="/route" className='any'>Route</Link>
+                <Link to="/login" className='any'>Route</Link>
             </div>
         </div>
         <div className='footer2'>
@@ -36,6 +36,7 @@ export default function Footer() {
         </div>
         <div className='footer3'>© Copyright 2020, All rights reserved</div>
       </div>
+      
     </div>
   )
 }

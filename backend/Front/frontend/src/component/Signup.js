@@ -39,7 +39,7 @@ export default function Signup() {
           </Row>
 
 
-          <Form method="POST" onSubmit={handleSubmit}>
+          <Form className='btl' method="POST" onSubmit={handleSubmit}>
             <Row>
               <Form.Group>
                 <Form.Label for="email">Email</Form.Label>
@@ -47,13 +47,13 @@ export default function Signup() {
               </Form.Group>
             </Row>
 
-            <Row>
+            <Row className='mt-3'>
               <Form.Group>
                 <Form.Label for="password">Password</Form.Label>
                 <Form.Control className='w-100' name="Password" id="Password" type="Password" required></Form.Control>
               </Form.Group>
             </Row>
-            <Row>
+            <Row className='mt-3'>
               <Form.Group>
                 <Form.Label for="password">Confirm Password</Form.Label>
                 <Form.Control className='w-100' name="password2" id="password2" type="password" required></Form.Control>

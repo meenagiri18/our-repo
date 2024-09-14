@@ -11,7 +11,7 @@ import { IoPeople } from "react-icons/io5";
 import Homepageimg from '../images/homepageimg.jpg'
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
-import Footer from './footer'
+import Footerhome from './footerhome';
 
 
 
@@ -120,7 +120,7 @@ export default function Homepage() {
         </div>
 
       </div>
-      <div><Footer/></div>
+      <div><Footerhome/></div>
     </div>
   )
 }

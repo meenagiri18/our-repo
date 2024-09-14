@@ -41,18 +41,18 @@ export default function Login() {
             <p>Login To Your Account!</p>
           </Row>
           <hr></hr> 
-          <Form method='POST' onSubmit={handleSubmit}>
+          <Form  className='btl' method='POST' onSubmit={handleSubmit}>
             <Row>
               <Form.Group>
                 <Form.Label for="email">Email</Form.Label>
-                <Form.Control className='w-100' name="email" id="email" type="email" required></Form.Control>
+                <Form.Control className='' name="email" id="email" type="email" required></Form.Control>
               </Form.Group>
 
             </Row>
-            <Row>
-              <Form.Group className='mt-3'>
+            <Row className='mt-3'>
+              <Form.Group >
                 <Form.Label for="password">Password</Form.Label>
-                <Form.Control className='w-100' name="password" id="password" type="password" required></Form.Control>
+                <Form.Control className='' name="password" id="password" type="password" required></Form.Control>
               </Form.Group>
 
             </Row>

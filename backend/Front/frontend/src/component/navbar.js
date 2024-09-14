@@ -30,6 +30,11 @@ export default function Navbar() {
 
 
                 </div>
+                <div className=' btn'>
+                <button><Link to="/" className='log'>Logout</Link></button>
+                
+            </div>
+
             </div>
         </div>
     )
