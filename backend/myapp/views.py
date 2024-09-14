@@ -70,8 +70,6 @@ def login(request):
       
         else:
             return JsonResponse({'success':False,'error':'Invalid credentials'})
-
-            
           
     else:
             return redirect( '/login')
@@ -93,11 +91,6 @@ def shipment(request):
         receiver_address = request.POST.get('address1')
         email = request.POST.get('email1')
         phone_number = request.POST.get('number1')
-
-        if weight < 0:
-            return JsonResponse({'success':False ,'error4':'Weight cannot be less than zero.'})
-        if package < 0:
-            return JsonResponse({'success':False ,'error5':'Dimension  cannot be negative.'})
         
         
         shipping = Shipment(goods=goods,weight=weight,package=package,shipping_cost=shipping_cost,sender_name=sender_name, sender_address=sender_address,email=email,phone_number=phone_number,receiver_name=receiver_name,receiver_address=receiver_address)
