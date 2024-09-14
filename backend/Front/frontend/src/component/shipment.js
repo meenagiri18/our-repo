@@ -46,23 +46,23 @@ export default function Shipment() {
             <div className="section">
               <div className="design2">
                 <div className="field">
-                  <label htmlFor="name">Sender Name</label>
+                  <label htmlFor="name">Sender Name*</label>
                   <input name="sender" id="name" type="text" required />
                 </div>
 
                 <div className="field">
-                  <label htmlFor="address">Sender Address</label>
+                  <label htmlFor="address">Sender Address*</label>
                   <input name="address" id="address" type="text" required />
                 </div>
               </div>
               <div className="design2">
                 <div className="field">
-                  <label htmlFor="email">Email</label>
+                  <label htmlFor="email">Email*</label>
                   <input name="email" id="email" type="email" required />
                 </div>
 
                 <div className="field">
-                  <label htmlFor="number">Phone Number</label>
+                  <label htmlFor="number">Phone Number*</label>
                   <input name="number" id="number" type="number" required />
                 </div>
               </div>
@@ -72,23 +72,23 @@ export default function Shipment() {
               <div className="section">
                 <div className="d-flex design2">
                   <div className="field">
-                    <label htmlFor="name1">Receiver Name</label>
+                    <label htmlFor="name1">Receiver Name*</label>
                     <input name="receiver" id="name1" type="text" required />
                   </div>
 
                   <div className="field">
-                    <label htmlFor="address1">Receiver Address</label>
+                    <label htmlFor="address1">Receiver Address*</label>
                     <input name="address1" id="address1" type="text" required />
                   </div>
                 </div>
                 <div className="d-flex design2">
                   <div className="field">
-                    <label htmlFor="email1">Receiver Email</label>
+                    <label htmlFor="email1">Receiver Email*</label>
                     <input name="email1" id="email1" type="email" required />
                   </div>
 
                   <div className="field">
-                    <label htmlFor="number1">Receiver Phone Number</label>
+                    <label htmlFor="number1">Receiver Phone Number*</label>
                     <input name="number1" id="number1" type="number" required />
                   </div>
                 </div>
@@ -99,12 +99,12 @@ export default function Shipment() {
               <div className="section">
                 <div className="d-flex design2">
                   <div className="field">
-                    <label htmlFor="goods">Goods Included in Shipment</label>
+                    <label htmlFor="goods">Goods Included in Shipment*</label>
                     <input name="goods" id="goods" type="text" required />
                   </div>
 
                   <div className="field">
-                    <label htmlFor="weight">Total Weight in KG</label>
+                    <label htmlFor="weight">Total Weight in KG*</label>
                     <input
                       name="weight"
                       id="weight"
@@ -118,12 +118,12 @@ export default function Shipment() {
                 {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
                 <div className="d-flex design2">
                   <div className="field">
-                    <label htmlFor="package">Package Dimensions in cm</label>
-                    <input name="package" id="package" type="text" required />
+                    <label htmlFor="package">Package Dimensions in cm*</label>
+                    <input name="package" id="package" type="number" required />
                   </div>
 
                   <div className="field">
-                    <label htmlFor="number2">Shipment Cost</label>
+                    <label htmlFor="number2">Shipment Cost*</label>
                     <input
                       name="number2"
                       id="number2"

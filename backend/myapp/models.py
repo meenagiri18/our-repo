@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 import uuid
+from django.core.mail import send_mail
 
 
 # Create your models here.
@@ -17,7 +18,7 @@ class Shipment(models.Model):
 
     receiver_name = models.CharField(max_length=100,null=True)
     receiver_address = models.CharField(null=True,max_length=100)
-    tracking_number = models.CharField(max_length=12, unique=True, blank=True)
+    tracking_number = models.CharField(max_length=12, unique=True, blank=False, null=False, default='')
 
     # New fields for status, current location, and delivery date
     status_choices = [
@@ -38,12 +39,40 @@ class Shipment(models.Model):
             raise ValidationError('Shipping cost cannot be negative.')
 
     def save(self, *args, **kwargs):
-        if not self.tracking_number:
-            self.tracking_number = str(uuid.uuid4()).replace("-", "").upper()[:12]
+        is_new = self.pk is None
+        if is_new and not self.tracking_number:
+            self.tracking_number = self.generate_tracking_number()
         super().save(*args, **kwargs)
+        if is_new and self.email:
+            self.send_tracking_email()
+
+    def generate_tracking_number(self):
+         while True:
+            tracking_number = str(uuid.uuid4()).replace("-", "").upper()[:12]
+            if not Shipment.objects.filter(tracking_number=tracking_number).exists():
+                return tracking_number
+
 
     def __str__(self):
         return f"{self.tracking_number} - {self.goods}"
+    
+    def send_tracking_email(self):
+        subject = 'Your Shipment Tracking Number'
+        message = (
+            f"ExpressTrack Pickup Request Submitted Successfully!\n\n"
+            f"Dear {self.sender_name},\n\n"
+            f"Your shipment pickup request from {self.sender_address} to {self.receiver_address}, "
+            f"weighing {self.weight} kg, has been successfully placed with ExpressTrack.\n"
+            f"Your Tracking Number is {self.tracking_number}.\n\n"
+            f"Thank you for choosing ExpressTrack!"
+    )
+        from_email = 'meenagiri2058@gmail.com'
+        recipient = [self.email]
+
+        send_mail(subject, message, from_email, recipient)
+
+
+
 
 
 class RouteResult(models.Model):

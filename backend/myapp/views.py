@@ -96,8 +96,8 @@ def shipment(request):
 
         if weight < 0:
             return JsonResponse({'success':False ,'error4':'Weight cannot be less than zero.'})
-        if shipping_cost < 0:
-            return JsonResponse({'success':False ,'error5':'Shipping cost cannot be negative.'})
+        if package < 0:
+            return JsonResponse({'success':False ,'error5':'Dimension  cannot be negative.'})
         
         
         shipping = Shipment(goods=goods,weight=weight,package=package,shipping_cost=shipping_cost,sender_name=sender_name, sender_address=sender_address,email=email,phone_number=phone_number,receiver_name=receiver_name,receiver_address=receiver_address)
