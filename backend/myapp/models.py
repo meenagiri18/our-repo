@@ -8,7 +8,7 @@ class Shipment(models.Model):
     goods = models.CharField(null=True, max_length=100)
     weight = models.IntegerField(null=True)
     package = models.IntegerField(null=True, blank=True)
-    shipping_cost = models.DecimalField(max_digits=1000, decimal_places=2, null=True)
+    shipping_cost = models.DecimalField(max_digits=65, decimal_places=2, null=True)
     
     sender_name = models.CharField(max_length=100, null=True)
     sender_address = models.CharField(null=True, max_length=100)
@@ -73,32 +73,7 @@ class Shipment(models.Model):
     def __str__(self):
         return f"{self.tracking_number} - {self.goods}"
 
-    def generate_tracking_number(self):
-         while True:
-            tracking_number = str(uuid.uuid4()).replace("-", "").upper()[:12]
-            if not Shipment.objects.filter(tracking_number=tracking_number).exists():
-                return tracking_number
-
-
-    def __str__(self):
-        return f"{self.tracking_number} - {self.goods}"
-    
-    def send_tracking_email(self):
-        subject = 'Your Shipment Tracking Number'
-        message = (
-            f"ExpressTrack Pickup Request Submitted Successfully!\n\n"
-            f"Dear {self.sender_name},\n\n"
-            f"Your shipment pickup request from {self.sender_address} to {self.receiver_address}, "
-            f"weighing {self.weight} kg, has been successfully placed with ExpressTrack.\n"
-            f"Your Tracking Number is {self.tracking_number}.\n\n"
-            f"Thank you for choosing ExpressTrack!"
-    )
-        from_email = 'meenagiri2058@gmail.com'
-        recipient = [self.email]
-
-        send_mail(subject, message, from_email, recipient)
-
-
+   
 
 
 

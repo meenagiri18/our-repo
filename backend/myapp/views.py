@@ -7,6 +7,8 @@ from .algorithm import *
 from django.views.decorators.csrf import csrf_exempt
 from django.core.validators import EmailValidator
 from django.core.exceptions import ValidationError
+from django.contrib.auth import logout
+
 
 
 
@@ -76,7 +78,10 @@ def login(request):
           
     else:
             return redirect( '/login')
-    
+def signout_view(request):
+    logout(request)
+    return redirect('/')  # Redirects to the root URL ("/")
+   
 
 def shipment(request):
     if request.method == 'POST':
